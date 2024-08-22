@@ -43,7 +43,7 @@ public abstract class Spawner : MyMonoBehaviour
         Debug.Log(transform.name + ": LoadHolder", gameObject);
     }
 
-    protected virtual Transform SpawnPrefab(string prefabName, Vector3 spawnPos, Quaternion spawnRot)
+    public virtual Transform SpawnPrefab(string prefabName, Vector3 spawnPos, Quaternion spawnRot)
     {
         Transform newPrefab = this.GetObjByName(prefabName);
         if(newPrefab == null)
@@ -87,5 +87,11 @@ public abstract class Spawner : MyMonoBehaviour
         Transform newPrefab = Instantiate(obj);
         newPrefab.name = obj.name;
         return newPrefab;
+    }
+
+    public virtual void DespawnToPool(Transform obj)
+    {
+        this.poolList.Add(obj);
+        obj.gameObject.SetActive(false);
     }
 }
