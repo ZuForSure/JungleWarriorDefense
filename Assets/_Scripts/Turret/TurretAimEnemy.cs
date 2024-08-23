@@ -4,39 +4,38 @@ using UnityEngine;
 
 public class TurretAimEnemy : MyMonoBehaviour
 {
-    [SerializeField] protected Transform enemyTarget;
-    [SerializeField] protected float shootRange = 5f;
+    public Transform enemyTarget;
+    [SerializeField] protected float shootRange = 7f;
     [SerializeField] protected float distance = 0f;
-    [SerializeField] protected bool isFindEnemy = false;
-    [SerializeField] protected Vector3 lookAtEnemy;
-    public bool IsFindEnemy => isFindEnemy;
-    public Vector3 LookAtEnemy => lookAtEnemy;
+    [SerializeField] protected bool isEnemyComeIn = false;
+    [SerializeField] protected Vector2 lookAtEnemy;
+    public bool IsEnemyComeIn => isEnemyComeIn;
+    public Vector2 LookAtEnemy => lookAtEnemy;
 
     protected override void Update()
     {
         base.Update();
-        this.IsEnemyComeIn();
+        this.CheckEnemyComeIn();
     }
 
-    protected virtual bool IsEnemyComeIn()
+    protected virtual bool CheckEnemyComeIn()
     {
         this.distance = Vector2.Distance(transform.parent.position, this.enemyTarget.position);
 
         if(this.distance > this.shootRange)
         {
-            this.isFindEnemy = false;
-            return this.isFindEnemy;
+            this.isEnemyComeIn = false;
+            return this.isEnemyComeIn;
         }
 
-        this.isFindEnemy = true;
+        this.isEnemyComeIn = true;
         this.AimEnemy();
-
-        return this.isFindEnemy;
+        return this.isEnemyComeIn;
     }
 
-    protected virtual void AimEnemy() 
+    protected virtual void AimEnemy()
     {
         this.lookAtEnemy = this.enemyTarget.position - transform.parent.position;
-        this.lookAtEnemy.z = 0f;
+        this.lookAtEnemy.Normalize();
     }
 }

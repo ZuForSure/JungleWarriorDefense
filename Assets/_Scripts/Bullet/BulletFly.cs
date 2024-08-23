@@ -6,8 +6,8 @@ public class BulletFly : MyMonoBehaviour
 {
     [SerializeField] protected TurretController turretCtrl;
     [SerializeField] protected Rigidbody2D rb2D;
-    [SerializeField] protected float flySpeed = 5f;
-    [SerializeField] protected Vector3 flyDirection;
+    [SerializeField] protected float flySpeed = 10f;
+    [SerializeField] protected Vector2 flyDirection;
 
     protected override void LoadComponents()
     {
@@ -40,6 +40,6 @@ public class BulletFly : MyMonoBehaviour
     protected virtual void Flying()
     {
         this.flyDirection = this.turretCtrl.TurretAimEne.LookAtEnemy;
-        this.rb2D.AddForce(this.flyDirection * this.flySpeed);
+        this.rb2D.velocity = this.flyDirection * this.flySpeed;
     }
 }

@@ -31,7 +31,7 @@ public class TurretShooting : TurretAbstract
 
     protected virtual bool CheckCanShoot()
     {
-        this.canShoot = this.turretCtrl.TurretAimEne.IsFindEnemy;
+        this.canShoot = this.turretCtrl.TurretAimEne.IsEnemyComeIn;
         return this.canShoot;
     }
 }
