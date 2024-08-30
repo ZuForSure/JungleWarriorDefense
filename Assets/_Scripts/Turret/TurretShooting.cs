@@ -23,8 +23,7 @@ public class TurretShooting : TurretAbstract
         this.timer = 0f;
 
         Vector3 spawnPos = transform.position;
-        Quaternion spawnRot = transform.rotation;
-        Transform newBullet = BulletSpawner.Instance.SpawnPrefab(BulletSpawner.bullet, spawnPos, spawnRot);
+        Transform newBullet = BulletSpawner.Instance.SpawnPrefab(BulletSpawner.bullet, spawnPos, Quaternion.identity);
         if (newBullet == null) return;
         newBullet.gameObject.SetActive(true);
     }

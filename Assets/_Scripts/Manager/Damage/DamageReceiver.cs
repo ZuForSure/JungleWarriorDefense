@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[RequireComponent(typeof(Collider2D))]
 
-public class DamageReceiver : MyMonoBehaviour
+public abstract class DamageReceiver : MyMonoBehaviour
 {
     [Header("Damage Receiver")]
     [SerializeField] protected Collider2D colli2D;
@@ -51,8 +52,5 @@ public class DamageReceiver : MyMonoBehaviour
         this.OnDead();
     }
 
-    protected virtual void OnDead()
-    {
-        Debug.Log("Dead");
-    }
+    protected abstract void OnDead();
 }

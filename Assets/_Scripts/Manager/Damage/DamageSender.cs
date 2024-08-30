@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[RequireComponent(typeof(Collider2D))]
 
-public class DamageSender : MyMonoBehaviour
+public abstract class DamageSender : MyMonoBehaviour
 {
     [Header("Damage Sender")]
     [SerializeField] protected Collider2D colli2D;
@@ -31,10 +32,5 @@ public class DamageSender : MyMonoBehaviour
     protected virtual void SendDamage(DamageReceiver damageReceiver)
     {
         damageReceiver.DeductHp(this.damage);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        this.SendDamageToObject(collision.transform);
     }
 }

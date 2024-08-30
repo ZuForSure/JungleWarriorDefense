@@ -7,6 +7,8 @@ public class EnemySpawner : Spawner
     protected static EnemySpawner instance;
     public static EnemySpawner Instance => instance;
 
+    public static string Enemy = "Enemy_1";
+
     protected override void Awake()
     {
         if (instance != null) Debug.LogWarning("Only 1 EnemySpawner");

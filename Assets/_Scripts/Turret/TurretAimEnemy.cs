@@ -20,6 +20,8 @@ public class TurretAimEnemy : MyMonoBehaviour
 
     protected virtual bool CheckEnemyComeIn()
     {
+        if (this.enemyTarget == null) return false;
+
         this.distance = Vector2.Distance(transform.parent.position, this.enemyTarget.position);
 
         if(this.distance > this.shootRange)

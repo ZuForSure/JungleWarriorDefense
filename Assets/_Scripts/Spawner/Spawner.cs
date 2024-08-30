@@ -65,9 +65,9 @@ public abstract class Spawner : MyMonoBehaviour
 
     protected virtual Transform GetObjByName(string prefabName)
     {
-        foreach(Transform child in this.prefabList)
+        foreach (Transform child in this.prefabList)
         {
-            if(child.name == prefabName) return child;
+            if (child.name == prefabName) return child;
         }
 
         return null;
