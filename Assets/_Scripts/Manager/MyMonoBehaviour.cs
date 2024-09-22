@@ -17,12 +17,17 @@ public class MyMonoBehaviour : MonoBehaviour
 
     protected virtual void Start()
     {
-
+        //for override
     }
 
     protected virtual void Update()
     {
+        //for override
+    }
 
+    protected virtual void FixedUpdate()
+    {
+        //for override
     }
 
     protected virtual void LoadComponents()

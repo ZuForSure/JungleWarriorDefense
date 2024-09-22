@@ -1,6 +1,6 @@
 public abstract class Despawn : MyMonoBehaviour
 {
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
         this.Despawning();
     }

@@ -16,7 +16,7 @@ public class EnemySpawnAtPoint : MyMonoBehaviour
     protected override void Start()
     {
         base.Start();
-        this.SpawningAtPoint();
+        InvokeRepeating(nameof(SpawningAtPoint), 1f, 2f);
     }
 
     protected virtual void LoadSpawnController()
@@ -28,11 +28,11 @@ public class EnemySpawnAtPoint : MyMonoBehaviour
 
     protected virtual void SpawningAtPoint()
     {
-        Vector3 spawnPos = this.spawnCtrl.SpawnPoints.Poitns[0].position;
+        Transform randPoint = this.spawnCtrl.SpawnPoints.GetRandomPoint();
+        Vector3 spawnPos = randPoint.position;
         Quaternion spawnRot = Quaternion.identity;
+
         Transform newEnemy = EnemySpawner.Instance.SpawnPrefab(EnemySpawner.Enemy, spawnPos, spawnRot);
         newEnemy.gameObject.SetActive(true);
     }
-
-    
 }

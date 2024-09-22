@@ -9,7 +9,7 @@ public class TurretShooting : TurretAbstract
     [SerializeField] protected float timer = 0f;
     [SerializeField] protected float delay = 1f;
 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
         this.Shooting();
     }

@@ -23,4 +23,10 @@ public class SpawnPoints : MyMonoBehaviour
 
         Debug.Log(transform.name + ": LoadSpawnPoints", gameObject);
     }
+
+    public virtual Transform GetRandomPoint()
+    {
+        int rand = Random.Range(0, this.points.Count);
+        return this.points[rand];
+    }
 }
