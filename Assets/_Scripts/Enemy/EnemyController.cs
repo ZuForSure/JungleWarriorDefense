@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyController : MyMonoBehaviour
 {
-    [SerializeField] protected Rigidbody2D rb2D;
-    public Rigidbody2D Rb2D => rb2D;
+    [SerializeField] protected Rigidbody e_rb;
+    public Rigidbody E_rb => e_rb;
 
     protected override void LoadComponents()
     {
@@ -15,8 +15,8 @@ public class EnemyController : MyMonoBehaviour
 
     protected virtual void LoadRigi2D()
     {
-        if (this.rb2D != null) return;
-        this.rb2D = GetComponent<Rigidbody2D>();
+        if (this.e_rb != null) return;
+        this.e_rb = GetComponent<Rigidbody>();
         Debug.Log(transform.name + ": LoadRigi2D", gameObject);
     }
 }

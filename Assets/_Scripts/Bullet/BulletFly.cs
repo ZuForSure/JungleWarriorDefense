@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class BulletFly : MyMonoBehaviour
 {
-    [SerializeField] protected TurretController turretCtrl;
-    [SerializeField] protected Rigidbody2D rb2D;
+    [SerializeField] protected Rigidbody bullet_rb;
     [SerializeField] protected float flySpeed = 10f;
-    [SerializeField] protected Vector2 flyDirection;
+    [SerializeField] protected Vector3 flyDirection = Vector3.right;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadTurretCtroller();
-        this.LoadRigiBody2D();
+        this.LoadRigiBody();
     }
 
     protected override void Update()
@@ -22,24 +20,16 @@ public class BulletFly : MyMonoBehaviour
         this.Flying();
     }
 
-    protected virtual void LoadTurretCtroller()
+    protected virtual void LoadRigiBody() 
     {
-        if (this.turretCtrl != null) return;
-        this.turretCtrl = GameObject.Find("Turret").GetComponent<TurretController>();
-        Debug.Log(transform.name + ": LoadTurretCtroller", gameObject);
-    }
-
-    protected virtual void LoadRigiBody2D() 
-    {
-        if (this.rb2D != null) return;
-        this.rb2D = transform.GetComponentInParent<Rigidbody2D>();
-        this.rb2D.gravityScale = 0;
+        if (this.bullet_rb != null) return;
+        this.bullet_rb = transform.GetComponentInParent<Rigidbody>();
+        this.bullet_rb.useGravity = false;
         Debug.Log(transform.name + ": LoadRigiBody2D", gameObject);
     }
 
     protected virtual void Flying()
     {
-        this.flyDirection = this.turretCtrl.TurretAimEne.LookAtEnemy;
-        this.rb2D.velocity = this.flyDirection * this.flySpeed;
+        this.bullet_rb.velocity = this.flyDirection * this.flySpeed;
     }
 }

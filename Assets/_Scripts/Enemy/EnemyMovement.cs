@@ -31,7 +31,7 @@ public class EnemyMovement : EnemyAbstract
         if (this.target == null) return;
 
         Vector3 direction = this.GetDirection() * Time.deltaTime * this.moveSpeed;
-        this.enemyCtrl.Rb2D.MovePosition(transform.parent.position + direction);
+        this.enemyCtrl.E_rb.MovePosition(transform.parent.position + direction);
     }
 
     protected virtual Vector3 GetDirection()

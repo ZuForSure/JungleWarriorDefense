@@ -6,6 +6,8 @@ public class EnemySpawnAtPoint : MyMonoBehaviour
 {
     [SerializeField] protected SpawnController spawnCtrl;
     [SerializeField] protected int maxEnemies = 5;
+    [SerializeField] protected float startSpawn = 1f;
+    [SerializeField] protected float delaySpawn = 2f;
 
     protected override void LoadComponents()
     {
@@ -16,7 +18,7 @@ public class EnemySpawnAtPoint : MyMonoBehaviour
     protected override void Start()
     {
         base.Start();
-        InvokeRepeating(nameof(SpawningAtPoint), 1f, 2f);
+        InvokeRepeating(nameof(SpawningAtPoint), this.startSpawn, this.delaySpawn);
     }
 
     protected virtual void LoadSpawnController()

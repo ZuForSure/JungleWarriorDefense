@@ -10,6 +10,12 @@ public class EnemyDamReceiver : DamageReceiver
         this.ResetHP();
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.ReBorn();
+    }
+
     protected virtual void ResetHP()
     {
         this.maxHp = 5f;
@@ -18,6 +24,11 @@ public class EnemyDamReceiver : DamageReceiver
 
     protected override void OnDead()
     {
-        Destroy(transform.parent.gameObject);
+        this.DespawnEnemy();
+    }
+
+    protected virtual void DespawnEnemy()
+    {
+        EnemySpawner.Instance.DespawnToPool(transform.parent);
     }
 }

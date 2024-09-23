@@ -25,6 +25,11 @@ public class MyMonoBehaviour : MonoBehaviour
         //for override
     }
 
+    protected virtual void OnEnable()
+    {
+        //for override
+    }
+
     protected virtual void FixedUpdate()
     {
         //for override

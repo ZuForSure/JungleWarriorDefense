@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class TurretController : MyMonoBehaviour
 {
-    [SerializeField] protected TurretAimEnemy turretAimEne;
-    public TurretAimEnemy TurretAimEne => turretAimEne;
+    [SerializeField] protected TurretFindEnemy turretFindEne;
+    public TurretFindEnemy TurretFindEne => turretFindEne;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadTurretAimEnemy();
+        this.LoadTurretFindEnemy();
     }
 
-    protected virtual void LoadTurretAimEnemy()
+    protected virtual void LoadTurretFindEnemy()
     {
-        if (this.turretAimEne != null) return;
-        this.turretAimEne = transform.GetComponentInChildren<TurretAimEnemy>();
+        if (this.turretFindEne != null) return;
+        this.turretFindEne = transform.GetComponentInChildren<TurretFindEnemy>();
         Debug.Log(transform.name + ": LoadTurretAimEnemy", gameObject);
     }
 }

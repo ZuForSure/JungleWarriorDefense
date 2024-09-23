@@ -1,30 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider))]
 
 public abstract class DamageSender : MyMonoBehaviour
 {
     [Header("Damage Sender")]
-    [SerializeField] protected Collider2D colli2D;
+    [SerializeField] protected Collider colli;
     [SerializeField] protected float damage = 1f;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadCollider2D();
+        this.LoadCollider();
     }
 
-    protected virtual void LoadCollider2D()
+    protected virtual void LoadCollider()
     {
-        if (this.colli2D != null) return;
-        this.colli2D = transform.GetComponent<Collider2D>();
-        Debug.Log(transform.name + ": LoadCollider2D", gameObject);
+        if (this.colli != null) return;
+        this.colli = transform.GetComponent<Collider>();
+        Debug.Log(transform.name + ": LoadCollider", gameObject);
     }
 
     protected virtual void SendDamageToObject(Transform obj)
     {
-        DamageReceiver damageReceiver = obj.GetComponentInChildren<DamageReceiver>();
+        DamageReceiver damageReceiver = obj.GetComponent<DamageReceiver>();
         if (damageReceiver == null) return;
         this.SendDamage(damageReceiver);
     }
