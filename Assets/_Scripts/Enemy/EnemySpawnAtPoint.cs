@@ -7,7 +7,7 @@ public class EnemySpawnAtPoint : MyMonoBehaviour
     [SerializeField] protected SpawnController spawnCtrl;
     [SerializeField] protected int maxEnemies = 5;
     [SerializeField] protected float startSpawn = 1f;
-    [SerializeField] protected float delaySpawn = 2f;
+    [SerializeField] protected float delaySpawn = 3f;
 
     protected override void LoadComponents()
     {

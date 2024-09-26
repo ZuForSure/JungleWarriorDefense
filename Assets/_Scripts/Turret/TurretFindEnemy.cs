@@ -5,6 +5,7 @@ using UnityEngine;
 public class TurretFindEnemy : MyMonoBehaviour
 {
     public bool isDrawRaycast = false;
+    [SerializeField] protected LayerMask enemyLayer;
     [SerializeField] protected Vector3 raycastDirection = Vector3.right;
     [SerializeField] protected bool isFindEnemy = false;
     public bool IsFindEnemy => isFindEnemy;
@@ -18,17 +19,17 @@ public class TurretFindEnemy : MyMonoBehaviour
     protected virtual void EnemyFinding()
     {
         Vector3 pos = transform.parent.position;
-        Physics.Raycast(pos, this.raycastDirection, out RaycastHit hit);
+        bool isHitEnemy = Physics.Raycast(pos, this.raycastDirection, out RaycastHit hit, this.enemyLayer);
         this.DebugRaycast(pos, this.raycastDirection, hit);
 
-        if (hit.collider == null) 
+        if (!isHitEnemy) 
         {
             this.isFindEnemy = false;
             return;
         }
 
         DamageReceiver damageReceiver = hit.collider.GetComponent<DamageReceiver>();
-        if(damageReceiver == null)
+        if (damageReceiver == null)
         {
             this.isFindEnemy = false;
             return;
