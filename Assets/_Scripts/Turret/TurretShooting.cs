@@ -8,7 +8,7 @@ public class TurretShooting : TurretAbstract
 {
     [Header("Turret Shooting")]
     [SerializeField] protected Transform bulletSpawnPoint;
-    [SerializeField] protected bool canShoot = false;    
+    [SerializeField] protected bool canShoot = false;
     [SerializeField] protected float timer = 0f;
     [SerializeField] protected float delay = 1f;
 
@@ -17,17 +17,17 @@ public class TurretShooting : TurretAbstract
         base.LoadComponents();
         this.LoadSpawnPoint();
     }
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        this.Shooting();
+    }
 
     protected virtual void LoadSpawnPoint()
     {
         if (this.bulletSpawnPoint != null) return;
         this.bulletSpawnPoint = transform.Find("Bullet Spawn Point");
         Debug.Log(transform.name + ": LoadSpawnPoint", gameObject);
-    }
-
-    protected override void FixedUpdate()
-    {
-        this.Shooting();
     }
 
     protected virtual void Shooting()

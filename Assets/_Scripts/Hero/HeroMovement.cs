@@ -6,7 +6,6 @@ using UnityEngine;
 public class HeroMovement : HeroAbstract
 {
     [Header("Hero Movement")]
-    private bool isFacingRight = true;
 
     [Header("Walk")]
     [SerializeField] protected float moveSpeed = 2.5f;
@@ -14,38 +13,28 @@ public class HeroMovement : HeroAbstract
     [SerializeField] protected Vector3 moveDirection;
 
     [Header("Jump")]
-    [SerializeField] protected LayerMask groundLayer;
     [SerializeField] protected float jumpForce = 225f;
     [SerializeField] protected float plusJumpForce = 1.2f;
     [SerializeField] protected bool pressJump = false;
     [SerializeField] protected bool canDoubleJump = false;
+    private readonly int groundLayer = 3, heroLayer = 8, ceilingLayer = 7;
     protected bool isJumping = false;
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadGroundLayer();
-    }
+    protected Vector3 offset = new (0, -0.8f, 0);
+    protected Transform myGround;
 
     protected override void Update()
     {
         base.Update();
         this.GetInput();
         this.Jumping();
+        this.FindingGround();
+        this.GoingDown();
     }
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
         this.Walking();
-        this.Flip();
-    }
-
-    protected virtual void LoadGroundLayer()
-    {
-        if (this.groundLayer.value != 0) return;
-        this.groundLayer = LayerMask.GetMask("ground layer");
-        Debug.Log(transform.name + ": LoadGroundLayer", gameObject);
     }
 
     protected virtual void GetInput()
@@ -56,8 +45,8 @@ public class HeroMovement : HeroAbstract
 
     protected virtual void Walking()
     {
-        this.moveDirection = new Vector3(this.horizontal * this.moveSpeed, this.heroCtrl.RB.velocity.y, 0);
-        this.heroCtrl.RB.velocity = this.moveDirection;
+        this.moveDirection = new Vector3(this.horizontal * this.moveSpeed, this.heroCtrl.RB2d.velocity.y, 0);
+        this.heroCtrl.RB2d.velocity = this.moveDirection;
     }
 
     protected virtual void Jumping()
@@ -66,38 +55,55 @@ public class HeroMovement : HeroAbstract
 
         if (this.IsGrounded())
         {
-            this.heroCtrl.RB.AddForce(new Vector3(this.heroCtrl.RB.velocity.x, this.jumpForce, 0));
+            this.heroCtrl.RB2d.AddForce(new Vector3(this.heroCtrl.RB2d.velocity.x, this.jumpForce, 0));
             this.canDoubleJump = true;
         }
         else if (this.canDoubleJump)
         {
-            this.heroCtrl.RB.AddForce(new Vector3(this.heroCtrl.RB.velocity.x, this.jumpForce * this.plusJumpForce, 0));
+            this.heroCtrl.RB2d.AddForce(new Vector3(this.heroCtrl.RB2d.velocity.x, this.jumpForce * this.plusJumpForce, 0));
             this.canDoubleJump = false;
         }
     }
 
     protected virtual bool IsGrounded()
     {
+        float extraHeight = 0.1f;
+        Vector3 pos = transform.position + this.offset;
+        RaycastHit2D hit = Physics2D.Raycast(pos, Vector3.down, extraHeight);
+        if(hit.collider == null) return false;
+
+        return true /*hit.transform.gameObject.layer == this.groundLayer*/;
+    }
+
+    protected virtual void FindingGround()
+    {
+        int notHittedLayer = ~(1 << this.heroLayer);
         float extraHeight = 0.8f;
-        bool isRaycastHit = Physics.Raycast(transform.position, Vector3.down, extraHeight, this.groundLayer);
-        Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - extraHeight, 0), Color.green);
+        Vector3 pos = transform.position + this.offset;
 
-        return isRaycastHit;
+        RaycastHit2D hit = Physics2D.Raycast(pos, Vector3.down, extraHeight, notHittedLayer);
+        Debug.DrawLine(transform.position + this.offset, hit.point, Color.red);
+        if (hit.collider == null) return;
+
+        Ground ground = hit.transform.GetComponent<Ground>();
+        if(ground == null) return;
+        if (this.myGround == hit.transform) return;
+
+        ground.ChangeLayer(this.groundLayer);
+        this.myGround = hit.transform;
+        Debug.Log(hit.transform.name);
     }
 
-    protected virtual void Flip()
+    protected virtual void GoingDown()
     {
-        if (this.horizontal == 0) return;
-
-        if (this.horizontal > 0 && !this.isFacingRight) this.Fliped();
-        if (this.horizontal < 0 && this.isFacingRight) this.Fliped();
+        bool isGoingDown = InputManager.Instance.VerticalInput < 0;
+        if(isGoingDown) this.ResetMyGround();
     }
 
-    protected virtual void Fliped()
+    protected virtual void ResetMyGround()
     {
-        Vector3 localScale = this.heroCtrl.HeroAnimation.transform.localScale;
-        localScale.x *= -1;
-        this.heroCtrl.HeroAnimation.transform.localScale = localScale;
-        this.isFacingRight = !this.isFacingRight;
+        if(this.myGround == null) return;
+        this.myGround.GetComponent<Ground>().ChangeLayer(this.ceilingLayer);    
+        this.myGround = null;
     }
 }

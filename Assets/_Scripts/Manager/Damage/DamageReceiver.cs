@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Collider2D))]
 
 public abstract class DamageReceiver : MyMonoBehaviour
 {
     [Header("Damage Receiver")]
-    [SerializeField] protected Collider colli;
+    [SerializeField] protected Collider2D colli;
     [SerializeField] protected float hp = 10f;
     [SerializeField] protected float maxHp = 10f;
     [SerializeField] protected bool isDead = false;
@@ -20,7 +20,7 @@ public abstract class DamageReceiver : MyMonoBehaviour
     protected virtual void LoadCollider2D()
     {
         if (this.colli != null) return;
-        this.colli = transform.GetComponent<Collider>();
+        this.colli = transform.GetComponent<Collider2D>();
         Debug.Log(transform.name + ": LoadCollider2D", gameObject);
     }
 

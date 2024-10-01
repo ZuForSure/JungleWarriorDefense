@@ -9,9 +9,11 @@ public class InputManager : MyMonoBehaviour
 
     [SerializeField] protected float mouseInput;
     [SerializeField] protected float horizotalInput;
+    [SerializeField] protected float verticalInput;
     [SerializeField] protected bool jumpInput;
     public float MouseInput => mouseInput;
     public float HorizontalInput => horizotalInput;
+    public float VerticalInput => verticalInput;
     public bool JumpInput => jumpInput;
 
     protected override void Awake()
@@ -24,18 +26,19 @@ public class InputManager : MyMonoBehaviour
     {
         base.Update();
         this.GetMouseInput();
-        this.GetHorizontalInput();
+        this.GetMovementInput();
         this.GetJumpInput();
     }
 
     protected virtual void GetMouseInput()
     {
-        this.mouseInput = Input.GetAxis("Fire1");
+        this.mouseInput = Input.GetAxisRaw("Fire1");
     }
 
-    protected virtual void GetHorizontalInput()
+    protected virtual void GetMovementInput()
     {
         this.horizotalInput = Input.GetAxisRaw("Horizontal");
+        this.verticalInput = Input.GetAxisRaw("Vertical");
     }
 
     protected virtual void GetJumpInput()

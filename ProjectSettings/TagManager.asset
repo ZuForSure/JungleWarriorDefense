@@ -12,11 +12,11 @@ TagManager:
   - Water
   - UI
   - enemy layer
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ceiling layer
+  - hero layer
+  - turret layer
+  - bullet layer
+  - bound layer
   - 
   - 
   - 

@@ -31,15 +31,14 @@ public class BulletDamSender : DamageSender
         this.bulletCtrl.BulletDespawn.DespawnObj();
     }
 
-    //private void OnCollisionEnter(Collision collision)
+    //private void OnTriggerEnter(Collider other)
     //{
-    //    Debug.Log(transform.name + ": Collision with " + collision.transform.name);
-    //    this.SendDamageToObject(collision.transform);
+    //    //Debug.Log(transform.name + ": Collision with " + other.transform.name);
+    //    this.SendDamageToObject(other.transform);
     //}
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log(transform.name + ": Collision with " + other.transform.name);
-        this.SendDamageToObject(other.transform);
+        this.SendDamageToObject(collision.transform);
     }
 }
