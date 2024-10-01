@@ -16,10 +16,10 @@ public class HeroFindEnemy : FindEnemyBase
     protected override void Update()
     {
         base.Update();
-        this.UpdateRaycastDirection();
+        this.FlipRaycastDirection();
     }
 
-    protected virtual void UpdateRaycastDirection()
+    protected virtual void FlipRaycastDirection()
     {
         if (InputManager.Instance.HorizontalInput == 0) return;
 

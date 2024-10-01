@@ -636,7 +636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0023463de13204082f5e9d51f9c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet_rb: {fileID: 727974093}
   flySpeed: 10
   flyDirection: {x: 1, y: 0, z: 0}
 --- !u!1 &372566937
@@ -873,7 +872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0023463de13204082f5e9d51f9c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet_rb: {fileID: 1543780964}
   flySpeed: 10
   flyDirection: {x: 1, y: 0, z: 0}
 --- !u!1 &510549182
@@ -1501,6 +1499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 906771192}
   - component: {fileID: 906771193}
+  - component: {fileID: 906771194}
   m_Layer: 8
   m_Name: Hero Attack
   m_TagString: Untagged
@@ -1540,6 +1539,18 @@ MonoBehaviour:
   timer: 0
   autoAttackDelay: 1
   attackDelay: 0.5
+--- !u!114 &906771194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906771191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353dd9c59f0cc8e4fba464e384ba5113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1023886680
 GameObject:
   m_ObjectHideFlags: 0
@@ -2846,8 +2857,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2111372466}
-  - {fileID: 10747856}
   - {fileID: 510549183}
+  - {fileID: 10747856}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1807352808

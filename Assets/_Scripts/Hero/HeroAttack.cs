@@ -44,7 +44,8 @@ public class HeroAttack : HeroAbstract
     protected virtual void SpawnBullet()
     {
         Vector3 spawnPos = transform.position;
-        Transform bullet = BulletSpawner.Instance.SpawnPrefab(BulletSpawner.blueBullet, spawnPos, Quaternion.identity);
+        Quaternion spawnRot = transform.rotation;
+        Transform bullet = BulletSpawner.Instance.SpawnPrefab(BulletSpawner.blueBullet, spawnPos, spawnRot);
         if (bullet == null) return;
         bullet.gameObject.SetActive(true);
     }
