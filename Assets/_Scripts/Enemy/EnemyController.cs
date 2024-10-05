@@ -5,7 +5,9 @@ using UnityEngine;
 public class EnemyController : MyMonoBehaviour
 {
     [SerializeField] protected Rigidbody2D e_rb;
+    [SerializeField] protected EnemySO enemySO;
     public Rigidbody2D E_rb => e_rb;
+    public EnemySO EnemySO => enemySO;  
 
     protected override void LoadComponents()
     {

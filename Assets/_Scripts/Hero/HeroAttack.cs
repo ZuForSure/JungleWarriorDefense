@@ -52,6 +52,7 @@ public class HeroAttack : HeroAbstract
 
     protected virtual bool CheckCanAutoShoot()
     {
+        if (!this.CheckIsCurrentHero()) this.isAutoAttack = true;
         return this.heroCtrl.HeroFindEnemy.IsFindEnemy && this.isAutoAttack;
     }
     

@@ -6,6 +6,7 @@ using UnityEngine;
 public class HeroMovement : HeroAbstract
 {
     [Header("Hero Movement")]
+    private bool isFacingRight = true;
 
     [Header("Walk")]
     [SerializeField] protected float moveSpeed = 2.5f;
@@ -25,15 +26,20 @@ public class HeroMovement : HeroAbstract
     protected override void Update()
     {
         base.Update();
+        if (!this.CheckIsCurrentHero()) return;
+
         this.GetInput();
         this.Jumping();
         this.FindingGround();
         this.GoingDown();
+        this.Flip();
     }
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        if (!this.CheckIsCurrentHero()) return;
+
         this.Walking();
     }
 
@@ -82,7 +88,7 @@ public class HeroMovement : HeroAbstract
         Vector3 pos = transform.position + this.offset;
 
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector3.down, extraHeight, notHittedLayer);
-        Debug.DrawLine(transform.position + this.offset, hit.point, Color.red);
+        //Debug.DrawLine(transform.position + this.offset, hit.point, Color.red);
         if (hit.collider == null) return;
 
         Ground ground = hit.transform.GetComponent<Ground>();
@@ -105,5 +111,22 @@ public class HeroMovement : HeroAbstract
         if(this.myGround == null) return;
         this.myGround.GetComponent<Ground>().ChangeLayer(this.ceilingLayer);    
         this.myGround = null;
+    }
+
+    protected virtual void Flip()
+    {
+        float horizontal = InputManager.Instance.HorizontalInput;
+        if (horizontal == 0) return;
+
+        if (horizontal > 0 && !this.isFacingRight) this.Fliped();
+        if (horizontal < 0 && this.isFacingRight) this.Fliped();
+    }
+
+    protected virtual void Fliped()
+    {
+        Vector3 localScale = this.heroCtrl.HeroAnimation.transform.localScale;
+        localScale.x *= -1;
+        this.heroCtrl.HeroAnimation.transform.localScale = localScale;
+        this.isFacingRight = !this.isFacingRight;
     }
 }

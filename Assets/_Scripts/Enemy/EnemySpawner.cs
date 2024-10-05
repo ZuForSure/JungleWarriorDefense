@@ -7,7 +7,7 @@ public class EnemySpawner : Spawner
     protected static EnemySpawner instance;
     public static EnemySpawner Instance => instance;
 
-    public static string Enemy = "Enemy_1";
+    public static string Enemy = "FlyEnemy";
 
     protected override void Awake()
     {

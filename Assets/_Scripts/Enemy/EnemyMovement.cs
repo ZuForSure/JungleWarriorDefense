@@ -4,7 +4,7 @@ public class EnemyMovement : EnemyAbstract
 {
     [Header("Enemy Movement")]
     [SerializeField] protected Transform target;
-    [SerializeField] protected float moveSpeed = 5f;
+    [SerializeField] protected float moveSpeed;
     [SerializeField] protected Vector3 moveDirection;
 
     protected override void LoadComponents()
@@ -13,17 +13,23 @@ public class EnemyMovement : EnemyAbstract
         this.LoadTarget();
     }
 
-    protected virtual void LoadTarget()
+    protected override void ResetValue()
     {
-        if (this.target != null) return;
-        this.target = GameObject.Find("Target Points").transform;
-        Debug.Log(transform.name + "LoadTarget", gameObject);
+        base.ResetValue();
+        this.moveSpeed = this.enemyCtrl.EnemySO.speed;
     }
 
     protected override void Update()
     {
         base.Update();
         this.Moving();
+    }
+
+    protected virtual void LoadTarget()
+    {
+        if (this.target != null) return;
+        this.target = GameObject.Find("Target Points").transform;
+        Debug.Log(transform.name + "LoadTarget", gameObject);
     }
 
     protected virtual void Moving()

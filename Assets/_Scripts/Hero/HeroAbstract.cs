@@ -6,6 +6,8 @@ public abstract class HeroAbstract : MyMonoBehaviour
 {
     [Header("Hero Abstract")]
     [SerializeField] protected HeroController heroCtrl;
+    public bool isCurrentHero = false;
+
 
     protected override void LoadComponents()
     {
@@ -18,5 +20,14 @@ public abstract class HeroAbstract : MyMonoBehaviour
         if (this.heroCtrl != null) return;
         this.heroCtrl = transform.GetComponentInParent<HeroController>();
         Debug.Log(transform.name + ": LoadHeroController", gameObject);
+    }
+
+    protected virtual bool CheckIsCurrentHero()
+    {
+        HeroController currentHero = PlayerManager.Instance.CurrentHero;
+        if (currentHero != this.heroCtrl) this.isCurrentHero = false;
+        else this.isCurrentHero = true;
+
+        return this.isCurrentHero;
     }
 }

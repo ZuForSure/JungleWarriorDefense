@@ -8,8 +8,6 @@ public class HeroAnimation : HeroAbstract
     [SerializeField] protected Animator animator;
     [SerializeField] protected bool isWalking;
     [SerializeField] protected bool isJumping;
-    private bool isFacingRight = true;
-
 
     protected override void LoadComponents()
     {
@@ -20,9 +18,10 @@ public class HeroAnimation : HeroAbstract
     protected override void Update()
     {
         base.Update();
+        if (!this.CheckIsCurrentHero()) return;
+
         this.WalkAnimation();
         this.JumpAnimation();
-        this.Flip();
     }
 
     protected virtual void LoadAnimator()
@@ -42,22 +41,5 @@ public class HeroAnimation : HeroAbstract
     {
         this.isJumping = InputManager.Instance.JumpInput;
         this.animator.SetBool("IsJumping", this.isJumping);
-    }
-
-    protected virtual void Flip()
-    {
-        float horizontal = InputManager.Instance.HorizontalInput;
-        if (horizontal == 0) return;
-
-        if (horizontal > 0 && !this.isFacingRight) this.Fliped();
-        if (horizontal < 0 && this.isFacingRight) this.Fliped();
-    }
-
-    protected virtual void Fliped()
-    {
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
-        this.isFacingRight = !this.isFacingRight;
     }
 }
