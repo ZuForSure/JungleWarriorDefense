@@ -7135,9 +7135,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2d: {fileID: 1850379314}
   heroMovement: {fileID: 1697557207}
-  heroAnimation: {fileID: 0}
+  heroAnimation: {fileID: 1606387234}
   heroFindEne: {fileID: 1883742178}
-  heroAttack: {fileID: 0}
+  heroAttack: {fileID: 1461944665}
 --- !u!50 &1850379314
 Rigidbody2D:
   serializedVersion: 4
