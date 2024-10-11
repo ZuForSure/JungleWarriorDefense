@@ -6,10 +6,12 @@ public class HeroAttack : HeroAbstract
 {
     [Header("Hero Attack")]
     [SerializeField] protected bool isAutoAttack = false;
+    [SerializeField] protected bool isAttacking = false;
     [SerializeField] protected float timer = 0f;
     [SerializeField] protected float autoAttackDelay = 1f;
     [SerializeField] protected float attackDelay = 0.5f;
     public bool IsAutoAttack => isAutoAttack;   
+    public bool IsAttacking => isAttacking;
 
     protected override void FixedUpdate()
     {
@@ -22,6 +24,8 @@ public class HeroAttack : HeroAbstract
     {
         if(!this.CheckCanAutoShoot()) return;
 
+        this.isAttacking = false;
+
         this.timer += Time.fixedDeltaTime;
         if (this.timer < this.autoAttackDelay) return;
         this.timer = 0f;
@@ -31,8 +35,10 @@ public class HeroAttack : HeroAbstract
 
     protected virtual void MouseAttacking()
     {
-        if (this.isAutoAttack) return;
+        if(this.isAutoAttack) return;
         if(!this.CheckCanMosueShoot()) return;
+
+        this.isAttacking = false;
 
         this.timer += Time.fixedDeltaTime;
         if (this.timer < this.attackDelay) return;
@@ -43,6 +49,8 @@ public class HeroAttack : HeroAbstract
 
     protected virtual void SpawnBullet()
     {
+        this.isAttacking = true;
+
         Vector3 spawnPos = transform.position;
         Quaternion spawnRot = transform.rotation;
         Transform bullet = BulletSpawner.Instance.SpawnPrefab(BulletSpawner.blueBullet, spawnPos, spawnRot);

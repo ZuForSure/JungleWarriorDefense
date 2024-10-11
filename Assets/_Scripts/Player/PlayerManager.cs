@@ -36,7 +36,7 @@ public class PlayerManager : MyMonoBehaviour
     {
         //Not done
         if (this.heroSpawner != null) return;
-        this.heroSpawner = GameObject.Find("Wizard Spawner").GetComponent<HeroSpawner>();
+        this.heroSpawner = GameObject.Find("Tanker Spawner").GetComponent<HeroSpawner>();
         Debug.Log(transform.name + ": LoadHeroComponent", gameObject);
     }
 

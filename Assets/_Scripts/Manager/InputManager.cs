@@ -11,6 +11,7 @@ public class InputManager : MyMonoBehaviour
     [SerializeField] protected float horizotalInput;
     [SerializeField] protected float verticalInput;
     [SerializeField] protected bool jumpInput;
+    public PlayerInteract playerInteract;
     public float MouseInput => mouseInput;
     public float HorizontalInput => horizotalInput;
     public float VerticalInput => verticalInput;
@@ -24,11 +25,12 @@ public class InputManager : MyMonoBehaviour
 
     protected override void Update()
     {
-        base.Update();
         this.GetMouseInput();
         this.GetMovementInput();
         this.GetJumpInput();
+        this.GetInteractInput();
     }
+
 
     protected virtual void GetMouseInput()
     {
@@ -44,5 +46,11 @@ public class InputManager : MyMonoBehaviour
     protected virtual void GetJumpInput()
     {
         this.jumpInput = Input.GetButtonDown("Jump");
+    }
+
+    protected virtual void GetInteractInput()
+    {
+        if (this.playerInteract == null) return;
+        if (Input.GetKeyDown(KeyCode.F)) this.playerInteract.OnPlayerInteract();
     }
 }

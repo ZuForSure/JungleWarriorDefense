@@ -7,6 +7,7 @@ public class MyMonoBehaviour : MonoBehaviour
     protected virtual void Awake()
     {
         this.LoadComponents();
+        this.ResetValue();
     }
 
     protected virtual void Reset()
