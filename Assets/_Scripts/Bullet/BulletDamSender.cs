@@ -31,12 +31,6 @@ public class BulletDamSender : DamageSender
         this.bulletCtrl.BulletDespawn.DespawnObj();
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    //Debug.Log(transform.name + ": Collision with " + other.transform.name);
-    //    this.SendDamageToObject(other.transform);
-    //}
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         this.SendDamageToObject(collision.transform);

@@ -29,7 +29,6 @@ public abstract class FindEnemyBase : MyMonoBehaviour
             this.isFindEnemy = false;
             return;
         }
-
         this.isFindEnemy = true;
 
         if (!this.isDrawRaycast) return;

@@ -13,7 +13,7 @@ public class HeroAttack : HeroAbstract
     public bool IsAutoAttack => isAutoAttack;   
     public bool IsAttacking => isAttacking;
 
-    protected override void FixedUpdate()
+    protected override void Update()
     {
         base.FixedUpdate();
         this.AutoAttacking();
@@ -26,7 +26,7 @@ public class HeroAttack : HeroAbstract
 
         this.isAttacking = false;
 
-        this.timer += Time.fixedDeltaTime;
+        this.timer += Time.deltaTime;
         if (this.timer < this.autoAttackDelay) return;
         this.timer = 0f;
 
@@ -40,7 +40,7 @@ public class HeroAttack : HeroAbstract
 
         this.isAttacking = false;
 
-        this.timer += Time.fixedDeltaTime;
+        this.timer += Time.deltaTime;
         if (this.timer < this.attackDelay) return;
         this.timer = 0f;
 
