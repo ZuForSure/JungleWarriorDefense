@@ -6,7 +6,7 @@ public class HeroSpawner : Spawner
 {
     public virtual GameObject GetHero()
     {
-        GameObject heroObj = this.prefabList[0].gameObject;
+        GameObject heroObj = this.prefabList[2].gameObject;
         GameObject hero = this.SpawnPrefab(heroObj.transform, Vector3.zero, transform.rotation).gameObject;
         return hero;
     }
