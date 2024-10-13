@@ -11,38 +11,30 @@ public class PlayerManager : MyMonoBehaviour
     [SerializeField] protected HeroController currentHero;
     public HeroController CurrentHero => currentHero;
 
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadHeroComponent();
-    }
-
     protected override void Awake()
     {
         base.Awake();
         if (instance != null) Debug.LogWarning("Only 1 PlayerManager");
         PlayerManager.instance = this;
-
-        //this.LoadPlayer();
     }
 
     protected override void Start()
     {
         base.Start();
+        this.GetRandomHeroClass();
         this.LoadPlayer();
     }
 
-    protected virtual void LoadHeroComponent()
+    protected virtual void GetRandomHeroClass()
     {
-        //Not done
-        if (this.heroSpawner != null) return;
-        this.heroSpawner = GameObject.Find("Tanker Spawner").GetComponent<HeroSpawner>();
-        Debug.Log(transform.name + ": LoadHeroComponent", gameObject);
+        int countHero = HeroManager.Instance.Heros.Count;
+        int rand = Random.Range(0, countHero);
+        this.heroSpawner = HeroManager.Instance.Heros[rand];
     }
 
     protected virtual void LoadPlayer()
     {
-        GameObject obj = this.heroSpawner.GetHero();
+        GameObject obj = this.heroSpawner.GetHero(1);
         obj.SetActive(true);
         this.SetPlayerCtrl(obj);
     }

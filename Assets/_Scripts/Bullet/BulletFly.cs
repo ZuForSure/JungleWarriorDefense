@@ -15,7 +15,6 @@ public class BulletFly : MyMonoBehaviour
 
     protected virtual void Flying()
     {
-        //this.bullet_rb.velocity = this.flyDirection * this.flySpeed;
         transform.parent.Translate(this.flyDirection * this.flySpeed * Time.deltaTime);
     }
 }

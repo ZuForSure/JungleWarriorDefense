@@ -4,31 +4,8 @@ using UnityEngine;
 
 public class BuildAble : PlayerInteract
 {
+    [Header("Build")]
     [SerializeField] protected int gold2Build = 10;
-    [SerializeField] protected bool canBuild;
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer != LayerManager.Instance.HeroLayer) return;
-        this.CheckCanBuild(true);
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer != LayerManager.Instance.HeroLayer) return;
-        this.CheckCanBuild(false);
-    }
-
-    protected virtual void CheckCanBuild(bool status)
-    {
-        if (this.canBuild == status) return;
-
-        this.canBuild = status;
-        InputManager inputManager = InputManager.Instance;
-        if (status) inputManager.playerInteract = this;
-        else inputManager.playerInteract = null;
-
-    }
 
     public override void OnPlayerInteract()
     {

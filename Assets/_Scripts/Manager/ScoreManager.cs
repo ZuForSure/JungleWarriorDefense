@@ -44,6 +44,13 @@ public class ScoreManager : MyMonoBehaviour
         return true;
     }
 
+    public virtual bool DeductExp(int amount)
+    {
+        if (!CanDeduct(this.exp, amount)) return false;
+        this.exp -= amount;
+        return true;
+    }
+
     protected virtual bool CanDeduct(int scoreType, int amout)
     {
         if(amout > scoreType) return false; 
