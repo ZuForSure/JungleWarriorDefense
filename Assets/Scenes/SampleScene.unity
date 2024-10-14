@@ -258,7 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 14845422}
   - component: {fileID: 14845421}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Turret Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -310,7 +310,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &20840662
 Transform:
   m_ObjectHideFlags: 0
@@ -324,7 +324,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 749850333}
+  m_Father: {fileID: 1999072359}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &24517386
 GameObject:
@@ -1028,7 +1028,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 199066482}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hero Buy Point
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -1097,7 +1097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gold: 0
-  exp: 0
+  exp: 100
 --- !u!1 &232192583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1113,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &232192584
 Transform:
   m_ObjectHideFlags: 0
@@ -1127,7 +1127,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 749850333}
+  m_Father: {fileID: 1999072359}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &254110105
 GameObject:
@@ -1419,7 +1419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 322757470}
   - component: {fileID: 322757469}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Turret Point (3)
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -1647,7 +1647,7 @@ GameObject:
   - component: {fileID: 363982344}
   - component: {fileID: 363982343}
   - component: {fileID: 363982342}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Build Able
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1820,7 +1820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 394957799}
   - component: {fileID: 394957800}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3279,8 +3279,6 @@ Transform:
   - {fileID: 254110106}
   - {fileID: 1999072359}
   - {fileID: 734922283}
-  - {fileID: 232192584}
-  - {fileID: 20840662}
   m_Father: {fileID: 526035311}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &749850334
@@ -3339,7 +3337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 758973028}
   - component: {fileID: 758973027}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Turret Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -3451,8 +3449,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776384237}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.69, y: 1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3771,7 +3769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 814331499}
   - component: {fileID: 814331500}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Turret Point
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -4241,7 +4239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 935647824}
   - component: {fileID: 935647825}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4379,7 +4377,7 @@ GameObject:
   - component: {fileID: 966044662}
   - component: {fileID: 966044664}
   - component: {fileID: 966044665}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Build Able
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4471,7 +4469,7 @@ GameObject:
   - component: {fileID: 971255759}
   - component: {fileID: 971255758}
   - component: {fileID: 971255757}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Build Able
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4699,7 +4697,7 @@ Transform:
   m_GameObject: {fileID: 1023886680}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.64, y: -1.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5507,7 +5505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1218463112}
   - component: {fileID: 1218463113}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6040,10 +6038,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a2eeb5e41ca6249a8c0691a8ffe4f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heros:
+  heroClasses:
   - {fileID: 125192427}
   - {fileID: 578067929}
   - {fileID: 598116630}
+  heros: []
 --- !u!1 &1338476210
 GameObject:
   m_ObjectHideFlags: 0
@@ -6375,7 +6374,7 @@ GameObject:
   - component: {fileID: 1394249251}
   - component: {fileID: 1394249250}
   - component: {fileID: 1394249252}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Buy Hero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6456,6 +6455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canInteract: 0
   exp2Buy: 50
+  maxHeros: 3
 --- !u!1 &1461944661
 GameObject:
   m_ObjectHideFlags: 0
@@ -6703,7 +6703,7 @@ Transform:
   m_GameObject: {fileID: 1543780960}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.252, y: -0.505, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7866,7 +7866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1762311136}
   - component: {fileID: 1762311137}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8431,7 +8431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1860938235}
   - component: {fileID: 1860938236}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8919,7 +8919,7 @@ GameObject:
   - component: {fileID: 1957732530}
   - component: {fileID: 1957732529}
   - component: {fileID: 1957732528}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Build Able
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9064,6 +9064,8 @@ Transform:
   m_Children:
   - {fileID: 430444295}
   - {fileID: 326142084}
+  - {fileID: 232192584}
+  - {fileID: 20840662}
   m_Father: {fileID: 749850333}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1999072360
@@ -9081,6 +9083,8 @@ MonoBehaviour:
   points:
   - {fileID: 430444295}
   - {fileID: 326142084}
+  - {fileID: 232192584}
+  - {fileID: 20840662}
 --- !u!1 &2002754921
 GameObject:
   m_ObjectHideFlags: 0
@@ -9264,6 +9268,7 @@ MonoBehaviour:
   horizotalInput: 0
   verticalInput: 0
   jumpInput: 0
+  playerIndex: 0
   playerInteract: {fileID: 0}
 --- !u!1 &2147115399
 GameObject:

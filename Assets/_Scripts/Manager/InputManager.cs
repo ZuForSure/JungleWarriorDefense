@@ -11,11 +11,13 @@ public class InputManager : MyMonoBehaviour
     [SerializeField] protected float horizotalInput;
     [SerializeField] protected float verticalInput;
     [SerializeField] protected bool jumpInput;
+    [SerializeField] protected int playerIndex = 0;
     public PlayerInteract playerInteract;
     public float MouseInput => mouseInput;
     public float HorizontalInput => horizotalInput;
     public float VerticalInput => verticalInput;
     public bool JumpInput => jumpInput;
+    public int PlayerIndex => playerIndex;
 
     protected override void Awake()
     {
@@ -29,8 +31,8 @@ public class InputManager : MyMonoBehaviour
         this.GetMovementInput();
         this.GetJumpInput();
         this.GetInteractInput();
+        this.GetChosePlayerInput();
     }
-
 
     protected virtual void GetMouseInput()
     {
@@ -52,5 +54,12 @@ public class InputManager : MyMonoBehaviour
     {
         if (this.playerInteract == null) return;
         if (Input.GetKeyDown(KeyCode.F)) this.playerInteract.OnPlayerInteract();
+    }
+
+    protected virtual void GetChosePlayerInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) this.playerIndex = 1;
+        if (Input.GetKeyDown(KeyCode.Alpha2)) this.playerIndex = 2;
+        if (Input.GetKeyDown(KeyCode.Alpha3)) this.playerIndex = 3;
     }
 }

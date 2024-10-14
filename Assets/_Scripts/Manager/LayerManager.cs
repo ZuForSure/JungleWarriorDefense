@@ -8,8 +8,16 @@ public class LayerManager : MyMonoBehaviour
     protected static LayerManager instance;
     public static LayerManager Instance => instance;
 
-    private readonly int heroLayer = 8, ceilingLayer = 7, enemyLayer = 6, turretLayer = 9, boundLayer = 11;
+    private readonly int heroLayer = 8, ceilingLayer = 7, 
+        enemyLayer = 6, turretLayer = 9, boundLayer = 11,
+        interactLayer = 12, bulletLayer = 10;
     public int HeroLayer => heroLayer;
+    public int InteractLayer => interactLayer;
+    public int TurretLayer => turretLayer;
+    public int BoundLayer => boundLayer;
+    public int BulletLayer => bulletLayer;
+    //public int CeilingLayer => ceilingLayer;
+    //public int EnemyLayer => enemyLayer;
 
     protected override void Awake()
     {
