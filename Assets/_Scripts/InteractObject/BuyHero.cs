@@ -10,8 +10,19 @@ public class BuyHero : PlayerInteract
 
     public override void OnPlayerInteract()
     {
+        if (this.IsMaxHero()) return;
         if (!this.IsEnoughExp()) return;
         this.SpawnHero();
+    }
+
+    protected virtual bool IsMaxHero()
+    {
+        if (HeroManager.Instance.Heros.Count >= this.maxHeros)
+        {
+            transform.parent.gameObject.SetActive(false);
+            return true;
+        }
+        return false;
     }
 
     protected virtual bool IsEnoughExp()
@@ -27,20 +38,8 @@ public class BuyHero : PlayerInteract
 
     protected virtual void SpawnHero()
     {
-        if (this.IsMaxHero()) return;
-
         HeroSpawner heroType = HeroManager.Instance.HerosClasses[1];
         GameObject hero = heroType.GetHero(1);
         hero.SetActive(true);
-    }
-
-    protected virtual bool IsMaxHero()
-    {
-        if(HeroManager.Instance.Heros.Count >= this.maxHeros)
-        {
-            transform.parent.gameObject.SetActive(false);
-            return true;
-        }
-        return false;
     }
 }

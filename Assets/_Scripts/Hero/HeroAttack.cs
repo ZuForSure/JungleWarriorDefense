@@ -15,7 +15,7 @@ public class HeroAttack : HeroAbstract
 
     protected override void Update()
     {
-        base.FixedUpdate();
+        base.Update();
         this.AutoAttacking();
         this.MouseAttacking();
     }

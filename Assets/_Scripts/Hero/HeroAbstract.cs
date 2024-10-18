@@ -8,13 +8,12 @@ public abstract class HeroAbstract : MyMonoBehaviour
     [SerializeField] protected HeroController heroCtrl;
     public bool isCurrentHero = false;
 
-
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadHeroController();
     }
-
+ 
     protected virtual void LoadHeroController()
     {
         if (this.heroCtrl != null) return;

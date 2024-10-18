@@ -9,6 +9,7 @@ public class HeroController : MyMonoBehaviour
     [SerializeField] protected HeroAnimation heroAnimation;
     [SerializeField] protected HeroFindEnemy heroFindEne;
     [SerializeField] protected HeroAttack heroAttack;
+    public Collider2D heroHitBox;
     public Rigidbody2D RB2d => rb2d;
     public HeroMovement HeroMovement => heroMovement;
     public HeroAnimation HeroAnimation => heroAnimation;
@@ -23,6 +24,7 @@ public class HeroController : MyMonoBehaviour
         this.LoadHeroAnimation();
         this.LoadHeroAttack();
         this.LoadRigibody();
+        this.LoadHitBox();
     }
 
     protected virtual void LoadRigibody()
@@ -63,5 +65,12 @@ public class HeroController : MyMonoBehaviour
         if (this.heroAttack != null) return;
         this.heroAttack = transform.GetComponentInChildren<HeroAttack>();
         Debug.Log(transform.name + ": LoadHeroAttack", gameObject);
+    }
+
+    protected virtual void LoadHitBox()
+    {
+        if (this.heroHitBox != null) return;
+        this.heroHitBox = transform.Find("Hit Box").GetComponent<Collider2D>();
+        Debug.Log(transform.name + ": LoadHitBox", gameObject);
     }
 }

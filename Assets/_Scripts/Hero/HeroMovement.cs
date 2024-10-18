@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ public class HeroMovement : HeroAbstract
     [SerializeField] protected float plusJumpForce = 1.2f;
     [SerializeField] protected bool pressJump = false;
     [SerializeField] protected bool canDoubleJump = false;
-    private readonly int groundLayer = 3, heroLayer = 8, ceilingLayer = 7;
+    [SerializeField] protected bool isGoingDown;
     protected bool isJumping = false;
     protected Vector3 offset = new (0, -0.8f, 0);
     protected Transform myGround;
@@ -29,9 +30,9 @@ public class HeroMovement : HeroAbstract
         if (!this.CheckIsCurrentHero()) return;
 
         this.GetInput();
-        this.Jumping();
-        this.FindingGround();
         this.GoingDown();
+        this.Jumping();
+        
         this.Flip();
     }
 
@@ -47,6 +48,7 @@ public class HeroMovement : HeroAbstract
     {
         this.horizontal = InputManager.Instance.HorizontalInput;
         this.pressJump = InputManager.Instance.JumpInput;
+        this.isGoingDown = InputManager.Instance.VerticalInput < 0;
     }
 
     protected virtual void Walking()
@@ -73,44 +75,29 @@ public class HeroMovement : HeroAbstract
 
     protected virtual bool IsGrounded()
     {
-        float extraHeight = 0.1f;
-        Vector3 pos = transform.position + this.offset;
-        RaycastHit2D hit = Physics2D.Raycast(pos, Vector3.down, extraHeight);
-        if(hit.collider == null) return false;
-
-        return true /*hit.transform.gameObject.layer == this.groundLayer*/;
-    }
-
-    protected virtual void FindingGround()
-    {
-        int notHittedLayer = ~(1 << this.heroLayer);
-        float extraHeight = 0.8f;
-        Vector3 pos = transform.position + this.offset;
-
-        RaycastHit2D hit = Physics2D.Raycast(pos, Vector3.down, extraHeight, notHittedLayer);
-        //Debug.DrawLine(transform.position + this.offset, hit.point, Color.red);
-        if (hit.collider == null) return;
-
-        Ground ground = hit.transform.GetComponent<Ground>();
-        if(ground == null) return;
-        if (this.myGround == hit.transform) return;
-
-        ground.ChangeLayer(this.groundLayer);
-        this.myGround = hit.transform;
-        Debug.Log(hit.transform.name);
+        if(this.GetRayCast().collider == null) return false;
+        return true;
     }
 
     protected virtual void GoingDown()
     {
-        bool isGoingDown = InputManager.Instance.VerticalInput < 0;
-        if(isGoingDown) this.ResetMyGround();
+        if (!this.IsGrounded()) return;
+
+        Ground ground = GetRayCast().transform.GetComponent<Ground>();
+        if (ground == null) return;
+
+        if (!this.isGoingDown) return;
+
+        this.heroCtrl.heroHitBox.isTrigger = true;
     }
 
-    protected virtual void ResetMyGround()
+    protected virtual RaycastHit2D GetRayCast()
     {
-        if(this.myGround == null) return;
-        this.myGround.GetComponent<Ground>().ChangeLayer(this.ceilingLayer);    
-        this.myGround = null;
+        float extraHeight = 0.1f;
+        Vector3 pos = transform.position + this.offset;
+        RaycastHit2D hit = Physics2D.Raycast(pos, Vector3.down, extraHeight);
+        
+        return hit;
     }
 
     protected virtual void Flip()

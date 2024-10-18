@@ -16,7 +16,7 @@ public class LayerManager : MyMonoBehaviour
     public int TurretLayer => turretLayer;
     public int BoundLayer => boundLayer;
     public int BulletLayer => bulletLayer;
-    //public int CeilingLayer => ceilingLayer;
+    public int CeilingLayer => ceilingLayer;
     //public int EnemyLayer => enemyLayer;
 
     protected override void Awake()

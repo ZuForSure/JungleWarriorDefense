@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ground : MonoBehaviour
+public class Ground : MyMonoBehaviour
 {
-    public virtual void ChangeLayer(int layer)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        gameObject.layer = layer;
+        if (collision.GetComponentInParent<HeroController>() == null) return;
+        collision.GetComponentInParent<HeroController>().heroHitBox.isTrigger = false;
     }
 }
