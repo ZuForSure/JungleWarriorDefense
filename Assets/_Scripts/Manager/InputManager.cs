@@ -7,17 +7,16 @@ public class InputManager : MyMonoBehaviour
     protected static InputManager instance;
     public static InputManager Instance => instance;
 
+    public PlayerInteract playerInteract;
+    public int playerIndex = 0;
     [SerializeField] protected float mouseInput;
     [SerializeField] protected float horizotalInput;
     [SerializeField] protected float verticalInput;
     [SerializeField] protected bool jumpInput;
-    [SerializeField] protected int playerIndex = 0;
-    public PlayerInteract playerInteract;
     public float MouseInput => mouseInput;
     public float HorizontalInput => horizotalInput;
     public float VerticalInput => verticalInput;
     public bool JumpInput => jumpInput;
-    public int PlayerIndex => playerIndex;
 
     protected override void Awake()
     {

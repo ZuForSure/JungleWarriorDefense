@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildAble : PlayerInteract
+public class BuildTurret : PlayerInteract
 {
     [Header("Build")]
     [SerializeField] protected int gold2Build = 10;

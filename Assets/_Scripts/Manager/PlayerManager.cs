@@ -21,7 +21,7 @@ public class PlayerManager : MyMonoBehaviour
     protected override void Start()
     {
         base.Start();
-        this.GetRandomHeroClass();
+        this.GetHeroClass();
         this.LoadPlayer();
     }
 
@@ -31,11 +31,10 @@ public class PlayerManager : MyMonoBehaviour
         this.ChosePlayer();
     }
 
-    protected virtual void GetRandomHeroClass()
+    protected virtual void GetHeroClass()
     {
-        int countHero = HeroManager.Instance.HerosClasses.Count;
-        int rand = Random.Range(0, countHero);
-        this.heroSpawner = HeroManager.Instance.HerosClasses[rand];
+        this.heroSpawner = HeroManager.Instance.GetRandomHeroClass();
+        if (this.heroSpawner == null) return;
     }
 
     protected virtual void LoadPlayer()
@@ -47,7 +46,7 @@ public class PlayerManager : MyMonoBehaviour
 
     protected virtual void ChosePlayer()
     {
-        int playerIndex = InputManager.Instance.PlayerIndex;
+        int playerIndex = InputManager.Instance.playerIndex;
         if (playerIndex == 0) return;
 
         if (playerIndex > HeroManager.Instance.Heros.Count) return;

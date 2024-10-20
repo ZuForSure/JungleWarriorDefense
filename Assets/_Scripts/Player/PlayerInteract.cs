@@ -10,16 +10,16 @@ public class PlayerInteract : MyMonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.layer != LayerManager.Instance.HeroLayer) return;
-        this.CheckCanBuild(true);
+        this.CheckCanInteract(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer != LayerManager.Instance.HeroLayer) return;
-        this.CheckCanBuild(false);
+        this.CheckCanInteract(false);
     }
 
-    protected virtual void CheckCanBuild(bool status)
+    protected virtual void CheckCanInteract(bool status)
     {
         if (this.canInteract == status) return;
 
@@ -27,6 +27,17 @@ public class PlayerInteract : MyMonoBehaviour
         InputManager inputManager = InputManager.Instance;
         if (status) inputManager.playerInteract = this;
         else inputManager.playerInteract = null;
+    }
+
+    protected virtual bool IsEnoughExp(int exp)
+    {
+        if (!ScoreManager.Instance.DeductExp(exp))
+        {
+            Debug.Log("NOT ENOUGH EXP");
+            return false;
+        }
+
+        return true;
     }
 
     public virtual void OnPlayerInteract() 

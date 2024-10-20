@@ -11,7 +11,7 @@ public class BuyHero : PlayerInteract
     public override void OnPlayerInteract()
     {
         if (this.IsMaxHero()) return;
-        if (!this.IsEnoughExp()) return;
+        if (!this.IsEnoughExp(this.exp2Buy)) return;
         this.SpawnHero();
     }
 
@@ -25,20 +25,9 @@ public class BuyHero : PlayerInteract
         return false;
     }
 
-    protected virtual bool IsEnoughExp()
-    {
-        if (!ScoreManager.Instance.DeductExp(this.exp2Buy))
-        {
-            Debug.Log("NOT ENOUGH EXP");
-            return false;
-        }
-
-        return true;
-    }
-
     protected virtual void SpawnHero()
     {
-        HeroSpawner heroType = HeroManager.Instance.HerosClasses[1];
+        HeroSpawner heroType = HeroManager.Instance.GetRandomHeroClass();
         GameObject hero = heroType.GetHero(1);
         hero.SetActive(true);
     }

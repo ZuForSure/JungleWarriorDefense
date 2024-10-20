@@ -36,4 +36,12 @@ public class HeroManager : MyMonoBehaviour
 
         Debug.Log(transform.name + ": LoadHeroSpawner", gameObject);
     }
+
+    public virtual HeroSpawner GetRandomHeroClass()
+    {
+        int rand = Random.Range(0, this.heroClasses.Count);
+        HeroSpawner randomHero = this.heroClasses[rand];
+        this.heroClasses.Remove(this.heroClasses[rand]);
+        return randomHero;
+    }
 }
