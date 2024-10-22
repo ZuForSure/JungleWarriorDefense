@@ -102,11 +102,11 @@ public class HeroMovement : HeroAbstract
 
     protected virtual void Flip()
     {
-        float horizontal = InputManager.Instance.HorizontalInput;
-        if (horizontal == 0) return;
+        //float horizontal = InputManager.Instance.HorizontalInput;
+        if (this.horizontal == 0) return;
 
-        if (horizontal > 0 && !this.isFacingRight) this.Fliped();
-        if (horizontal < 0 && this.isFacingRight) this.Fliped();
+        if (this.horizontal > 0 && !this.isFacingRight) this.Fliped();
+        if (this.horizontal < 0 && this.isFacingRight) this.Fliped();
     }
 
     protected virtual void Fliped()

@@ -17,7 +17,7 @@ public class LayerManager : MyMonoBehaviour
     public int BoundLayer => boundLayer;
     public int BulletLayer => bulletLayer;
     public int CeilingLayer => ceilingLayer;
-    //public int EnemyLayer => enemyLayer;
+    public int EnemyLayer => enemyLayer;
 
     protected override void Awake()
     {
@@ -30,6 +30,7 @@ public class LayerManager : MyMonoBehaviour
         Physics2D.IgnoreLayerCollision(this.heroLayer, this.heroLayer, true);
         Physics2D.IgnoreLayerCollision(this.heroLayer, this.turretLayer, true);
         Physics2D.IgnoreLayerCollision(this.enemyLayer, this.boundLayer, true);
+        Physics2D.IgnoreLayerCollision(this.turretLayer, this.bulletLayer, true);
     }
 }
 
