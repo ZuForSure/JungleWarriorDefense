@@ -24,11 +24,21 @@ public class BulletDamSender : DamageSender
     {
         base.SendDamage(damageReceiver);
         this.DespawnBullet();
+        this.SpawnFX();
     }
 
     protected virtual void DespawnBullet()
     {
         this.bulletCtrl.BulletDespawn.DespawnObj();
+    }
+
+    protected virtual void SpawnFX()
+    {
+        Vector3 spawnPos = transform.position;
+        Quaternion spawnRot = transform.rotation;
+        Transform newFX = FXSpawner.Instance.SpawnPrefab(transform.parent.name + " FX", spawnPos, spawnRot);
+        if (newFX == null) return;
+        newFX.gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

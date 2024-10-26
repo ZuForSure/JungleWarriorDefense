@@ -53,7 +53,8 @@ public class HeroAttack : HeroAbstract
 
         Vector3 spawnPos = transform.position;
         Quaternion spawnRot = transform.rotation;
-        Transform bullet = BulletSpawner.Instance.SpawnPrefab(BulletSpawner.blueBullet, spawnPos, spawnRot);
+
+        Transform bullet = BulletSpawner.Instance.SpawnPrefab(this.GetBulletName(), spawnPos, spawnRot);
         if (bullet == null) return;
         bullet.gameObject.SetActive(true);
     }
@@ -68,5 +69,12 @@ public class HeroAttack : HeroAbstract
     protected virtual bool CheckCanMosueShoot()
     {
         return InputManager.Instance.MouseInput == 1;
+    }
+
+    protected virtual string GetBulletName()
+    {
+        string heroName = transform.parent.name;
+        string bulletName = heroName[..^2] + " Bullet";
+        return bulletName;
     }
 }
