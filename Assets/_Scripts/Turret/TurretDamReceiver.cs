@@ -37,10 +37,20 @@ public class TurretDamReceiver : DamageReceiver
     protected override void OnDead()
     {
         this.DespawnTurret();
+        this.SpawnTurretPoint();
     }
 
     protected virtual void DespawnTurret()
     {
         TurretSpawner.Instance.DespawnToPool(transform.parent);
+    }
+
+    protected virtual void SpawnTurretPoint()
+    {
+        Vector3 spawnPos = transform.position;
+        Quaternion spawnRot = transform.rotation;
+        Transform newPoint = PointTurretSpawner.Instance.SpawnPrefab(PointTurretSpawner.pointTurret, spawnPos, spawnRot);
+        if (newPoint == null) return;
+        newPoint.gameObject.SetActive(true);
     }
 }

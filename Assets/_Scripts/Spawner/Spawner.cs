@@ -55,7 +55,7 @@ public abstract class Spawner : MyMonoBehaviour
         return SpawnPrefab(newPrefab, spawnPos, spawnRot);
     }
 
-    protected virtual Transform SpawnPrefab(Transform prefab, Vector3 spawnPos, Quaternion spawnRot)
+    public virtual Transform SpawnPrefab(Transform prefab, Vector3 spawnPos, Quaternion spawnRot)
     {
         Transform newPrefab = this.GetObjFromPool(prefab);
         newPrefab.SetPositionAndRotation(spawnPos, spawnRot);

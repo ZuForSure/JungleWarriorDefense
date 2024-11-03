@@ -9,29 +9,29 @@ public class BuildTurret : PlayerInteract
 
     public override void OnPlayerInteract()
     {
-        if (!this.IsEnoughGold()) return;
+        if (!this.IsEnoughGold(this.gold2Build)) return;
         this.SpawnTurret();
-    }
-
-    protected virtual bool IsEnoughGold()
-    {
-        if (!ScoreManager.Instance.DeductGold(this.gold2Build))
-        {
-            Debug.Log("NOT ENOUGH GOLD");
-            return false;
-        }
-
-        return true;
     }
 
     protected virtual void SpawnTurret()
     {
         Vector3 spawnPos = transform.position;
         Quaternion spawnRot = transform.rotation;
-        Transform newTurret = TurretSpawner.Instance.SpawnPrefab(TurretSpawner.iceTurret, spawnPos, spawnRot);
+        Transform newTurret = TurretSpawner.Instance.SpawnPrefab(TurretSpawner.Instance.GetRandomTurretName(), spawnPos, spawnRot);
         if (newTurret == null) return;
         newTurret.gameObject.SetActive(true);
 
-        transform.parent.gameObject.SetActive(false);
+        this.DespawnTurretPoint();
+        this.SpawnFX();
+    }
+
+    protected virtual void DespawnTurretPoint()
+    {
+        PointTurretSpawner.Instance.DespawnToPool(transform.parent);
+    }
+
+    protected virtual void SpawnFX()
+    {
+        FXSpawner.Instance.SpawnTurretAppearFX(transform.position, transform.rotation);
     }
 }

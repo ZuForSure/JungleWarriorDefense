@@ -45,6 +45,12 @@ TagManager:
   - name: InteractObj
     uniqueID: 1989924355
     locked: 0
+  - name: Turret
+    uniqueID: 224036915
+    locked: 0
   - name: Hero
     uniqueID: 2928706243
+    locked: 0
+  - name: Bullet
+    uniqueID: 836991197
     locked: 0

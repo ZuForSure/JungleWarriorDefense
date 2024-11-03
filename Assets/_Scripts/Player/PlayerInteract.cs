@@ -40,6 +40,17 @@ public class PlayerInteract : MyMonoBehaviour
         return true;
     }
 
+    protected virtual bool IsEnoughGold(int gold)
+    {
+        if (!ScoreManager.Instance.DeductGold(gold))
+        {
+            Debug.Log("NOT ENOUGH GOLD");
+            return false;
+        }
+
+        return true;
+    }
+
     public virtual void OnPlayerInteract() 
     {
         //For override

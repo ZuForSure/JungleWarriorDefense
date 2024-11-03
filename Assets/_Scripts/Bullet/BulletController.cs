@@ -25,7 +25,7 @@ public class BulletController : MyMonoBehaviour
     {
         if (this.bulletDespawn != null) return;
         this.bulletDespawn =  transform.GetComponentInChildren<BulletDespawn>();
-        Debug.Log(transform.name + ": LoadBulletDespawn", gameObject);
+        //Debug.Log(transform.name + ": LoadBulletDespawn", gameObject);
     }
 
     protected virtual void LoadBulletDamSender()
