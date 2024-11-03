@@ -24,6 +24,12 @@ public class HeroMovement : HeroAbstract
     protected Vector3 offset = new (0, -0.8f, 0);
     protected Transform myGround;
 
+    protected override void ResetValue()
+    {
+        base.ResetValue();
+        this.moveSpeed = this.heroCtrl.HeroSO.moveSpeed;
+    }
+
     protected override void Update()
     {
         base.Update();

@@ -5,7 +5,9 @@ using UnityEngine;
 public class TurretController : MyMonoBehaviour
 {
     [SerializeField] protected TurretFindEnemy turretFindEne;
+    [SerializeField] protected TurretSO turetSO;
     public TurretFindEnemy TurretFindEne => turretFindEne;
+    public TurretSO TurretSO => turetSO;
 
     protected override void LoadComponents()
     {

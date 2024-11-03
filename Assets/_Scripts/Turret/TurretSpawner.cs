@@ -7,7 +7,7 @@ public class TurretSpawner : Spawner
     protected static TurretSpawner instance;
     public static TurretSpawner Instance => instance;
 
-    public static string turret = "Turret";
+    public static string iceTurret = "Ice Turret_1";
 
     protected override void Awake()
     {

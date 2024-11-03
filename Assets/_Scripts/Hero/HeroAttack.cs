@@ -8,10 +8,17 @@ public class HeroAttack : HeroAbstract
     [SerializeField] protected bool isAutoAttack = false;
     [SerializeField] protected bool isAttacking = false;
     [SerializeField] protected float timer = 0f;
-    [SerializeField] protected float autoAttackDelay = 1f;
+    [SerializeField] protected float autoAttackDelay;
     [SerializeField] protected float attackDelay = 0.5f;
     public bool IsAutoAttack => isAutoAttack;   
     public bool IsAttacking => isAttacking;
+
+    protected override void ResetValue()
+    {
+        base.ResetValue();
+        this.attackDelay = this.heroCtrl.HeroSO.attackSpeed;
+        this.autoAttackDelay = this.attackDelay + 0.5f;
+    }
 
     protected override void Update()
     {
@@ -53,9 +60,10 @@ public class HeroAttack : HeroAbstract
 
         Vector3 spawnPos = transform.position;
         Quaternion spawnRot = transform.rotation;
-
         Transform bullet = BulletSpawner.Instance.SpawnPrefab(this.GetBulletName(), spawnPos, spawnRot);
         if (bullet == null) return;
+
+        this.SetBulletDamage(bullet);
         bullet.gameObject.SetActive(true);
     }
 
@@ -76,5 +84,13 @@ public class HeroAttack : HeroAbstract
         string heroName = transform.parent.name;
         string bulletName = heroName[..^2] + " Bullet";
         return bulletName;
+    }
+
+    protected virtual void SetBulletDamage(Transform bullet)
+    {
+        BulletController bulletCtrl = bullet.GetComponent<BulletController>();
+        if (bulletCtrl == null) return;
+
+        bulletCtrl.bulletDamSender.bulletDamage = this.heroCtrl.HeroSO.damage;
     }
 }

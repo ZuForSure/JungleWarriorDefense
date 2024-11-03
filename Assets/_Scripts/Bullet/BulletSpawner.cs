@@ -7,8 +7,10 @@ public class BulletSpawner : Spawner
     protected static BulletSpawner instance;
     public static BulletSpawner Instance => instance;
 
-    public static string turretBullet = "Turret Bullet";
+    public static string iceTurretBullet = "Ice Turret Bullet";
+    public static string fireTurretBullet = "Fire Turret Bullet";
     public static string wizardBullet = "Wizard Bullet";
+    public static string meleeAttack = "Melee Attack";
 
     protected override void Awake()
     {

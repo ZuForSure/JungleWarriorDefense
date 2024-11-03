@@ -28,7 +28,7 @@ public class BuildTurret : PlayerInteract
     {
         Vector3 spawnPos = transform.position;
         Quaternion spawnRot = transform.rotation;
-        Transform newTurret = TurretSpawner.Instance.SpawnPrefab(TurretSpawner.turret, spawnPos, spawnRot);
+        Transform newTurret = TurretSpawner.Instance.SpawnPrefab(TurretSpawner.iceTurret, spawnPos, spawnRot);
         if (newTurret == null) return;
         newTurret.gameObject.SetActive(true);
 

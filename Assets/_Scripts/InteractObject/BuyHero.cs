@@ -7,6 +7,22 @@ public class BuyHero : PlayerInteract
     [Header("Buy")]
     [SerializeField] protected int exp2Buy = 50;
     [SerializeField] protected int maxHeros = 3;
+    [SerializeField] protected GameObject close, open;
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadGameObj();
+    }
+
+    protected virtual void LoadGameObj()
+    {
+        if (this.close != null) return;
+        this.close = GameObject.Find("Close");
+        this.open = GameObject.Find("Open");
+        this.open.SetActive(false);    
+        Debug.Log(transform.name + ": LoadGameObj", gameObject);
+    }
 
     public override void OnPlayerInteract()
     {
@@ -19,7 +35,7 @@ public class BuyHero : PlayerInteract
     {
         if (HeroManager.Instance.Heros.Count >= this.maxHeros)
         {
-            transform.parent.gameObject.SetActive(false);
+            //transform.parent.gameObject.SetActive(false);
             return true;
         }
         return false;
@@ -30,5 +46,21 @@ public class BuyHero : PlayerInteract
         HeroSpawner heroType = HeroManager.Instance.GetRandomHeroClass();
         GameObject hero = heroType.GetHero(1);
         hero.SetActive(true);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer != LayerManager.Instance.HeroLayer) return;
+
+        this.open.SetActive(true);
+        this.close.SetActive(false);
+    }
+
+    protected override void OnTriggerExit2D(Collider2D collision)
+    {
+        base.OnTriggerExit2D(collision);
+
+        this.open.SetActive(false);
+        this.close.SetActive(true);    
     }
 }

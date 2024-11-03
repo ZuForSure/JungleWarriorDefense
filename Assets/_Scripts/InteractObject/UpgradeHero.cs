@@ -8,8 +8,15 @@ public class UpgradeHero : PlayerInteract
     [SerializeField] protected HeroController heroCtrl;
     [SerializeField] protected int exp2Upgrade = 100;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    this.heroCtrl = collision.GetComponentInParent<HeroController>();
+    //    if (this.heroCtrl == null) return;
+    //}
+
+    protected override void OnTriggerStay2D(Collider2D collision)
     {
+        base.OnTriggerStay2D(collision);
         this.heroCtrl = collision.GetComponentInParent<HeroController>();
         if (this.heroCtrl == null) return;
     }
@@ -23,7 +30,7 @@ public class UpgradeHero : PlayerInteract
 
     protected virtual bool IsMaxLevel()
     {
-        if (this.heroCtrl.HeroLevel < 3) return false;
+        if (this.heroCtrl.HeroSO.level < 3) return false;
         return true;
     }
 
@@ -38,7 +45,7 @@ public class UpgradeHero : PlayerInteract
         HeroSpawner currentHeroClass = this.heroCtrl.transform.parent.parent.GetComponent<HeroSpawner>();
         if (currentHeroClass == null) return;
 
-        GameObject newHero = currentHeroClass.GetHero(this.heroCtrl.HeroLevel + 1);
+        GameObject newHero = currentHeroClass.GetHero(this.heroCtrl.HeroSO.level + 1);
         newHero.SetActive(true);
 
         this.SetPlayerIndex(newHero);

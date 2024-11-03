@@ -6,17 +6,18 @@ public class HeroController : MyMonoBehaviour
 {
     public Collider2D heroHitBox;
     [SerializeField] protected Rigidbody2D rb2d;
+    [SerializeField] protected HeroSO heroSO;
     [SerializeField] protected HeroMovement heroMovement;
     [SerializeField] protected HeroAnimation heroAnimation;
     [SerializeField] protected HeroFindEnemy heroFindEne;
     [SerializeField] protected HeroAttack heroAttack;
-    [SerializeField] protected int heroLevel;
+    //[SerializeField] protected int heroLevel;
     public Rigidbody2D RB2d => rb2d;
-    public HeroMovement HeroMovement => heroMovement;
+    public HeroSO HeroSO => heroSO;
+    //public HeroMovement HeroMovement => heroMovement;
     public HeroAnimation HeroAnimation => heroAnimation;
     public HeroFindEnemy HeroFindEnemy => heroFindEne;
     public HeroAttack HeroAttack => heroAttack;
-    public int HeroLevel => heroLevel;
 
     protected override void LoadComponents()
     {
@@ -27,7 +28,7 @@ public class HeroController : MyMonoBehaviour
         this.LoadHeroAttack();
         this.LoadRigibody();
         this.LoadHitBox();
-        this.LoadHeroLevel();
+        //this.LoadHeroLevel();
     }
 
     protected virtual void LoadRigibody()
@@ -77,12 +78,12 @@ public class HeroController : MyMonoBehaviour
         Debug.Log(transform.name + ": LoadHitBox", gameObject);
     }
 
-    protected virtual void LoadHeroLevel()
-    {
-        if (this.heroLevel != 0) return;
-        string heroName = transform.name;
-        string levelCh = heroName[^1..];
-        this.heroLevel = int.Parse(levelCh);
-        Debug.Log(transform.name + ": LoadHeroLevel", gameObject);
-    }
+    //protected virtual void LoadHeroLevel()
+    //{
+    //    if (this.heroLevel != 0) return;
+    //    string heroName = transform.name;
+    //    string levelCh = heroName[^1..];
+    //    this.heroLevel = int.Parse(levelCh);
+    //    Debug.Log(transform.name + ": LoadHeroLevel", gameObject);
+    //}
 }

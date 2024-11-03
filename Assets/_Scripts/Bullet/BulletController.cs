@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class BulletController : MyMonoBehaviour
 {
-    [SerializeField] protected BulletDespawn bulletDespawn;
     [SerializeField] protected Rigidbody2D bulletRB;
+    [SerializeField] protected BulletDespawn bulletDespawn;
     [SerializeField] protected Transform model;
+
+    public BulletDamSender bulletDamSender;
     public BulletDespawn BulletDespawn => bulletDespawn;
-    public Rigidbody2D BulletRB => bulletRB;
     public Transform Model => model;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadBulletDespawn();
+        this.LoadBulletDamSender();
         this.LoadRigiBody2D();
         this.LoadModel();
     }
@@ -24,6 +26,13 @@ public class BulletController : MyMonoBehaviour
         if (this.bulletDespawn != null) return;
         this.bulletDespawn =  transform.GetComponentInChildren<BulletDespawn>();
         Debug.Log(transform.name + ": LoadBulletDespawn", gameObject);
+    }
+
+    protected virtual void LoadBulletDamSender()
+    {
+        if (this.bulletDamSender != null) return;
+        this.bulletDamSender = transform.GetComponentInChildren<BulletDamSender>();
+        Debug.Log(transform.name + ": LoadBulletDamSender", gameObject);
     }
 
     protected virtual void LoadRigiBody2D()

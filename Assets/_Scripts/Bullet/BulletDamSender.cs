@@ -6,6 +6,14 @@ public class BulletDamSender : DamageSender
 {
     [Header("Bullet Dam Sender")]
     [SerializeField] protected BulletController bulletCtrl;
+    public float bulletDamage;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.damage = this.bulletDamage;
+        //Debug.Log(transform.name + ": Damage: " + this.bulletDamage);
+    }
 
     protected override void LoadComponents()
     {
@@ -29,6 +37,7 @@ public class BulletDamSender : DamageSender
 
     protected virtual void DespawnBullet()
     {
+        if (this.bulletCtrl.BulletDespawn == null) return;
         this.bulletCtrl.BulletDespawn.DespawnObj();
     }
 

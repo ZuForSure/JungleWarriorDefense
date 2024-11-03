@@ -7,13 +7,13 @@ public class PlayerInteract : MyMonoBehaviour
     [Header("Player Interact")]
     [SerializeField] protected bool canInteract;
 
-    private void OnTriggerStay2D(Collider2D collision)
+    protected virtual void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.layer != LayerManager.Instance.HeroLayer) return;
         this.CheckCanInteract(true);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer != LayerManager.Instance.HeroLayer) return;
         this.CheckCanInteract(false);
