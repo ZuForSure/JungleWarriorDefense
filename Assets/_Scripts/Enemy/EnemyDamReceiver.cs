@@ -36,7 +36,7 @@ public class EnemyDamReceiver : DamageReceiver
 
     protected virtual void ResetHP()
     {
-        this.maxHp = 5f;
+        this.maxHp = this.enemyCtrl.EnemySO.hp;
         this.ReBorn();
     }
 

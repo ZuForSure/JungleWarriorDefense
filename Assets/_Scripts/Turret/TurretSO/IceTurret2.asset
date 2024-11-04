@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretClass: 0
   level: 2
-  turretMaxHP: 2
+  turretMaxHP: 5
   turretDamage: 2.5
   turretAttackSpeed: 1

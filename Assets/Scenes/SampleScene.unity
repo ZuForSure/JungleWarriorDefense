@@ -797,7 +797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &104445191
 Transform:
   m_ObjectHideFlags: 0
@@ -1104,7 +1104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &140355997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1594,7 +1594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &243039550
 Transform:
   m_ObjectHideFlags: 0
@@ -2359,11 +2359,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colli: {fileID: 354894872}
-  hp: 1
-  maxHp: 1
+  hp: 3
+  maxHp: 3
   isDead: 0
   turretCtrl: {fileID: 1377562780}
-  turretHP: 1
+  turretHP: 3
 --- !u!61 &354894872
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2487,7 +2487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &372566938
 Rigidbody2D:
   serializedVersion: 4
@@ -2926,11 +2926,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colli: {fileID: 480441270}
-  hp: 2
-  maxHp: 2
+  hp: 5
+  maxHp: 5
   isDead: 0
   turretCtrl: {fileID: 1139484929}
-  turretHP: 2
+  turretHP: 5
 --- !u!61 &480441270
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3888,7 +3888,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.05011159, y: -0.11418453}
+  m_Offset: {x: 0.05011159, y: 0.059936017}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3899,7 +3899,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.99628794, y: 1.2580647}
+  m_Size: {x: 0.99628794, y: 1.6063058}
   m_EdgeRadius: 0
 --- !u!114 &676822205
 MonoBehaviour:
@@ -3934,6 +3934,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colli: {fileID: 676822204}
   damage: 1
+  eCtrl: {fileID: 776384240}
+  time2SendDamge: 1
+  isDetectTurret: 0
 --- !u!1 &678619620
 GameObject:
   m_ObjectHideFlags: 0
@@ -4761,7 +4764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &776384238
 Transform:
   m_ObjectHideFlags: 0
@@ -4771,7 +4774,7 @@ Transform:
   m_GameObject: {fileID: 776384237}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.07, y: 0.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4794,6 +4797,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   e_rb: {fileID: 776384241}
   enemySO: {fileID: 11400000, guid: 471d4167d4647044982a91cd23b0bf87, type: 2}
+  enemyDamSender: {fileID: 676822206}
+  eAnimation: {fileID: 3599778903123687794}
 --- !u!50 &776384241
 Rigidbody2D:
   serializedVersion: 4
@@ -5098,7 +5103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &818482091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5242,11 +5247,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colli: {fileID: 839258874}
-  hp: 3
-  maxHp: 3
+  hp: 10
+  maxHp: 10
   isDead: 0
   turretCtrl: {fileID: 243039551}
-  turretHP: 3
+  turretHP: 10
 --- !u!61 &839258874
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5358,7 +5363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &874915152
 Transform:
   m_ObjectHideFlags: 0
@@ -6094,7 +6099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &986548720
 Transform:
   m_ObjectHideFlags: 0
@@ -6389,7 +6394,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1023886681
 Transform:
   m_ObjectHideFlags: 0
@@ -7294,11 +7299,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colli: {fileID: 1122117317}
-  hp: 3
-  maxHp: 3
+  hp: 10
+  maxHp: 10
   isDead: 0
   turretCtrl: {fileID: 1445517375}
-  turretHP: 3
+  turretHP: 10
 --- !u!61 &1122117317
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7608,7 +7613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1139484928
 Transform:
   m_ObjectHideFlags: 0
@@ -7741,7 +7746,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.9124783}
+  m_Offset: {x: 0, y: 0.8547625}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7752,7 +7757,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.57272655}
+  m_Size: {x: 1, y: 0.68815815}
   m_EdgeRadius: 0
 --- !u!114 &1222392210
 MonoBehaviour:
@@ -8735,7 +8740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1377562779
 Transform:
   m_ObjectHideFlags: 0
@@ -8947,7 +8952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1445517374
 Transform:
   m_ObjectHideFlags: 0
@@ -10098,7 +10103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1584353494
 Transform:
   m_ObjectHideFlags: 0
@@ -11687,11 +11692,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colli: {fileID: 1753251013}
-  hp: 1
-  maxHp: 1
+  hp: 3
+  maxHp: 3
   isDead: 0
   turretCtrl: {fileID: 1023886682}
-  turretHP: 1
+  turretHP: 3
 --- !u!61 &1753251013
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11721,10 +11726,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.01046896, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -11735,7 +11740,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5672889, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &1758113101
 GameObject:
@@ -12296,7 +12301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1809822383
 Transform:
   m_ObjectHideFlags: 0
@@ -12380,7 +12385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1850379313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12574,11 +12579,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colli: {fileID: 1884807113}
-  hp: 2
-  maxHp: 2
+  hp: 5
+  maxHp: 5
   isDead: 0
   turretCtrl: {fileID: 104445192}
-  turretHP: 2
+  turretHP: 5
 --- !u!61 &1884807113
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12970,7 +12975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1947438684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23716,6 +23721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2541096325862455432}
   - component: {fileID: 3599778903123687793}
+  - component: {fileID: 3599778903123687794}
   m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
@@ -23917,6 +23923,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3599778903123687794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2541096325862455433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874f5e85506d1974181993fbe1d5c84e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCtrl: {fileID: 776384240}
+  animator: {fileID: 3599778903123687793}
 --- !u!1001 &3771327571268724371
 PrefabInstance:
   m_ObjectHideFlags: 0

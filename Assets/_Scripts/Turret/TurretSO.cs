@@ -8,7 +8,7 @@ public class TurretSO : ScriptableObject
 {
     public TurretClass turretClass;
     public int level;
-    public int turretMaxHP;
+    public float turretMaxHP;
     public float turretDamage;
     public float turretAttackSpeed;
 }

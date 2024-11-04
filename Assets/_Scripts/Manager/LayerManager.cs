@@ -31,6 +31,7 @@ public class LayerManager : MyMonoBehaviour
         Physics2D.IgnoreLayerCollision(this.heroLayer, this.turretLayer, true);
         Physics2D.IgnoreLayerCollision(this.enemyLayer, this.boundLayer, true);
         Physics2D.IgnoreLayerCollision(this.turretLayer, this.bulletLayer, true);
+        Physics2D.IgnoreLayerCollision(this.enemyLayer, this.enemyLayer, true);
     }
 }
 
