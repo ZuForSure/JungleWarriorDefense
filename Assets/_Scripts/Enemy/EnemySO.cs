@@ -7,6 +7,7 @@ public class EnemySO : ScriptableObject
 {
     public EnemyName enemyName;
     public EnemyType enemyType;
+    public int level;
     public float hp;
     public float speed;
     public float damage;

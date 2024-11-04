@@ -8,6 +8,8 @@ public class FXSpawner : Spawner
     public static FXSpawner Instance => instance;
 
     public static string turretAppear = "Turret Appear FX";
+    public static string turretDisAppear = "Turret Dissappear FX";
+    public static string enemyDead = "Enemy Dead FX";
 
     protected override void Awake()
     {

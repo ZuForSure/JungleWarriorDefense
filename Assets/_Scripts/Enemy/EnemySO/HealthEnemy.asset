@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03092ad85703d2e41addd8e39f9af858, type: 3}
-  m_Name: FlyEnemy
+  m_Name: HealthEnemy
   m_EditorClassIdentifier: 
-  enemyName: 1
-  enemyType: 1
+  enemyName: 4
+  enemyType: 2
   level: 1
-  hp: 5
+  hp: 15
   speed: 5
-  damage: 1
-  gold: 5
-  exp: 5
+  damage: 3
+  gold: 13
+  exp: 10

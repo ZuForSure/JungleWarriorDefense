@@ -1,6 +1,8 @@
 public enum EnemyName
 {
     FlyEmemy = 1,
-    Dog = 2,
-    Cat = 3,
+    SpeedEnemy = 2,
+    DamageEne = 3,
+    HealthEnemy = 4,
+    Boss = 5,
 }

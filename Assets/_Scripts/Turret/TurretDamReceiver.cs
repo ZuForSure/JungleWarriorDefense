@@ -38,6 +38,7 @@ public class TurretDamReceiver : DamageReceiver
     {
         this.DespawnTurret();
         this.SpawnTurretPoint();
+        this.SpawnFX();
     }
 
     protected virtual void DespawnTurret()
@@ -52,5 +53,14 @@ public class TurretDamReceiver : DamageReceiver
         Transform newPoint = PointTurretSpawner.Instance.SpawnPrefab(PointTurretSpawner.pointTurret, spawnPos, spawnRot);
         if (newPoint == null) return;
         newPoint.gameObject.SetActive(true);
+    }
+
+    protected virtual void SpawnFX()
+    {
+        Vector3 spawnPos = transform.parent.position;
+        Quaternion spawnRot = transform.rotation;
+        Transform newFX = FXSpawner.Instance.SpawnPrefab(FXSpawner.turretDisAppear, spawnPos, spawnRot);
+        if (newFX == null) return;
+        newFX.gameObject.SetActive(true);
     }
 }

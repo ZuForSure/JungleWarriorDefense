@@ -50,6 +50,7 @@ public class EnemyDamReceiver : DamageReceiver
     {
         this.DespawnEnemy();
         this.GetScore();
+        this.SpawnFX();
     }
 
     protected virtual void DespawnEnemy()
@@ -61,5 +62,14 @@ public class EnemyDamReceiver : DamageReceiver
     {
         ScoreManager.Instance.AddGold(this.gold);
         ScoreManager.Instance.AddExp(this.exp);
+    }
+
+    protected virtual void SpawnFX()
+    {
+        Vector3 spawnPos = transform.parent.position;
+        Quaternion spawnRot = transform.rotation;
+        Transform newFX = FXSpawner.Instance.SpawnPrefab(FXSpawner.enemyDead, spawnPos, spawnRot);
+        if (newFX == null) return;
+        newFX.gameObject.SetActive(true);
     }
 }
