@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroClass: 2
   level: 1
-  damage: 2
+  damage: 3
   moveSpeed: 2
   attackSpeed: 1.5

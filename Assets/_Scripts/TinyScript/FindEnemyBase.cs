@@ -38,7 +38,7 @@ public abstract class FindEnemyBase : MyMonoBehaviour
 
     protected virtual void IgnoreLayer()
     {
-        this.GetLayer();
+        this.GetLayerFromLayerManager();
         this.bitMaskNotHitted = ~((1 << this.heroLayer) | 
             (1 << this.turretLayer) | 
             (1 << this.bulletLayer) | 
@@ -46,7 +46,7 @@ public abstract class FindEnemyBase : MyMonoBehaviour
             (1 << this.interactLayer));
     }
 
-    protected virtual void GetLayer()
+    protected virtual void GetLayerFromLayerManager()
     {
         this.heroLayer = LayerManager.Instance.HeroLayer;
         this.interactLayer = LayerManager.Instance.InteractLayer;

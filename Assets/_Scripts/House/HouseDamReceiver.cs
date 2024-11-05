@@ -27,7 +27,7 @@ public class HouseDamReceiver : DamageReceiver
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer != LayerManager.Instance.EnemyLayer) return;
-        
+        this.DeductHp(1);
         EnemySpawner.Instance.DespawnToPool(collision.transform.parent);
     }
 }

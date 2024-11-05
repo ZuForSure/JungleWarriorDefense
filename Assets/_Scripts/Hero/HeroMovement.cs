@@ -46,6 +46,7 @@ public class HeroMovement : HeroAbstract
     {
         base.FixedUpdate();
         if (!this.CheckIsCurrentHero()) return;
+        if (this.heroCtrl.heroHitBox.isTrigger) return;
 
         this.Walking();
     }
@@ -93,7 +94,6 @@ public class HeroMovement : HeroAbstract
         if (ground == null) return;
 
         if (!this.isGoingDown) return;
-
         this.heroCtrl.heroHitBox.isTrigger = true;
     }
 
