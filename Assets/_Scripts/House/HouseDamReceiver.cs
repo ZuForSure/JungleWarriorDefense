@@ -22,6 +22,7 @@ public class HouseDamReceiver : DamageReceiver
     protected override void OnDead()
     {
         Debug.Log("LOSE");
+        GameManager.Instance.GameOver();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

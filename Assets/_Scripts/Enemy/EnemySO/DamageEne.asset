@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DamageEne
   m_EditorClassIdentifier: 
   enemyName: 3
-  enemyType: 1
+  enemyType: 2
   level: 1
   hp: 8
   speed: 5
