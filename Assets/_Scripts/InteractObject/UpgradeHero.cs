@@ -8,12 +8,6 @@ public class UpgradeHero : PlayerInteract
     [SerializeField] protected HeroController heroCtrl;
     [SerializeField] protected int exp2Upgrade = 100;
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    this.heroCtrl = collision.GetComponentInParent<HeroController>();
-    //    if (this.heroCtrl == null) return;
-    //}
-
     protected override void OnTriggerStay2D(Collider2D collision)
     {
         base.OnTriggerStay2D(collision);

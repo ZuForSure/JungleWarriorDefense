@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Tanker_1
   m_EditorClassIdentifier: 
   heroClass: 2
+  avatar: {fileID: 21300000, guid: e9b1c3991b1c6d4468b0e6bbdfe836e6, type: 3}
   level: 1
   damage: 3
   moveSpeed: 2

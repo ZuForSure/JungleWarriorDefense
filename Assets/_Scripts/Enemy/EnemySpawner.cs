@@ -11,7 +11,7 @@ public class EnemySpawner : Spawner
     [SerializeField] protected SpawnController spawnController;
     [SerializeField] protected int spawnCount = 0;
 
-    public static string Enemy = "FlyEnemy";
+    public static string Enemy = "SpeedEnemy";
 
     protected override void Awake()
     {
@@ -40,5 +40,11 @@ public class EnemySpawner : Spawner
 
         Transform newEnemy = this.SpawnPrefab(Enemy, spawnPos, spawnRot);
         newEnemy.gameObject.SetActive(true);
+    }
+
+    public virtual Transform GetRandomEnemy()
+    {
+        int rand = Random.Range(0, this.prefabList.Count);
+        return this.prefabList[rand];
     }
 }

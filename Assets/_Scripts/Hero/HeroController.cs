@@ -11,7 +11,6 @@ public class HeroController : MyMonoBehaviour
     [SerializeField] protected HeroAnimation heroAnimation;
     [SerializeField] protected HeroFindEnemy heroFindEne;
     [SerializeField] protected HeroAttack heroAttack;
-    //[SerializeField] protected int heroLevel;
     public Rigidbody2D RB2d => rb2d;
     public HeroSO HeroSO => heroSO;
     //public HeroMovement HeroMovement => heroMovement;
@@ -28,7 +27,6 @@ public class HeroController : MyMonoBehaviour
         this.LoadHeroAttack();
         this.LoadRigibody();
         this.LoadHitBox();
-        //this.LoadHeroLevel();
     }
 
     protected virtual void LoadRigibody()
@@ -77,13 +75,4 @@ public class HeroController : MyMonoBehaviour
         this.heroHitBox = transform.Find("Hit Box").GetComponent<Collider2D>();
         Debug.Log(transform.name + ": LoadHitBox", gameObject);
     }
-
-    //protected virtual void LoadHeroLevel()
-    //{
-    //    if (this.heroLevel != 0) return;
-    //    string heroName = transform.name;
-    //    string levelCh = heroName[^1..];
-    //    this.heroLevel = int.Parse(levelCh);
-    //    Debug.Log(transform.name + ": LoadHeroLevel", gameObject);
-    //}
 }

@@ -8,16 +8,15 @@ public class WaveManager : MyMonoBehaviour
     protected static WaveManager instance;
     public static WaveManager Instance => instance;
 
-    [SerializeField] protected bool isStartWave = false;
+    public bool isStartWave = false;
     [SerializeField] protected bool isWaveDone = true;
     [SerializeField] protected float waveTimer = 0f;
-    [SerializeField] protected float timeBetweenWaves = 10f;
-    [SerializeField] protected float timeBetweenEnemies = 2f;
+    [SerializeField] protected float timeBetweenWaves = 15f;
+    [SerializeField] protected float timeBetweenEnemies = 5f;
     [SerializeField] protected int maxEnemies = 5; 
     [SerializeField] protected int waveCount = 0; 
     [SerializeField] protected int enemyCount = 0; 
-    public bool IsStartWave => isStartWave;
-    public float WaveTimer => waveTimer;
+    public int WaveCount => waveCount;
 
     protected override void Awake()
     {
@@ -36,6 +35,7 @@ public class WaveManager : MyMonoBehaviour
 
     protected virtual bool CheckIsStartWave()
     {
+        if(GameManager.Instance.IsGameOver) this.isStartWave = false;
         return this.isStartWave;
     }
 

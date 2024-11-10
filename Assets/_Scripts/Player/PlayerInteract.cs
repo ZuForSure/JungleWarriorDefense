@@ -6,6 +6,16 @@ public class PlayerInteract : MyMonoBehaviour
 {
     [Header("Player Interact")]
     [SerializeField] protected bool canInteract;
+    private Transform f_Key;
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer != LayerManager.Instance.HeroLayer) return;
+        HeroController heroCtrl = collision.gameObject.GetComponentInParent<HeroController>();
+        if (heroCtrl != PlayerManager.Instance.CurrentHero) return;
+        
+        this.SpawnUI_F();
+    }
 
     protected virtual void OnTriggerStay2D(Collider2D collision)
     {
@@ -17,6 +27,21 @@ public class PlayerInteract : MyMonoBehaviour
     {
         if (collision.gameObject.layer != LayerManager.Instance.HeroLayer) return;
         this.CheckCanInteract(false);
+        this.DespawnUI_F();
+    }
+
+    protected virtual void SpawnUI_F()
+    {
+        Vector3 spawnPos = transform.parent.position + new Vector3(0.5f, 0.5f, 0);
+        Quaternion spawnRot = transform.rotation;
+        this.f_Key = SubObjSpawner.Instance.SpawnPrefab(SubObjSpawner.fKey, spawnPos, spawnRot);
+        if (this.f_Key == null) return;
+        this.f_Key.gameObject.SetActive(true);
+    }
+
+    protected virtual void DespawnUI_F()
+    {
+        SubObjSpawner.Instance.DespawnToPool(this.f_Key);
     }
 
     protected virtual void CheckCanInteract(bool status)

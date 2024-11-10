@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Shooter_2
   m_EditorClassIdentifier: 
   heroClass: 0
+  avatar: {fileID: 21300000, guid: f696ea5d097807f4eb118590f8345069, type: 3}
   level: 2
   damage: 1
   moveSpeed: 4

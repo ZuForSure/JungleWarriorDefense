@@ -7,6 +7,7 @@ using UnityEngine;
 public class HeroSO : ScriptableObject
 {
     public HeroClass heroClass;
+    public Sprite avatar;
     public int level;
     public float damage;
     public float moveSpeed;

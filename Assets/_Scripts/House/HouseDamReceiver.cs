@@ -5,7 +5,8 @@ using UnityEngine;
 public class HouseDamReceiver : DamageReceiver
 {
     [Header("House Dam Receiver")]
-    [SerializeField] protected float HouseHP = 5f;
+    [SerializeField] protected float houseHP = 5f;
+    public float HouseHP => houseHP;
 
     protected override void ResetValue()
     {
@@ -21,7 +22,6 @@ public class HouseDamReceiver : DamageReceiver
 
     protected override void OnDead()
     {
-        Debug.Log("LOSE");
         GameManager.Instance.GameOver();
     }
 

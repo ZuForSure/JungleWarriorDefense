@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wizard_2
   m_EditorClassIdentifier: 
   heroClass: 1
+  avatar: {fileID: 21300000, guid: 8b7dec0dacd7d244c81c1925702b372b, type: 3}
   level: 2
   damage: 2
   moveSpeed: 3

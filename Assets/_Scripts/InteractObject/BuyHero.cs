@@ -48,8 +48,9 @@ public class BuyHero : PlayerInteract
         hero.SetActive(true);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        base.OnTriggerEnter2D(collision);
         if (collision.gameObject.layer != LayerManager.Instance.HeroLayer) return;
 
         this.open.SetActive(true);
@@ -59,6 +60,7 @@ public class BuyHero : PlayerInteract
     protected override void OnTriggerExit2D(Collider2D collision)
     {
         base.OnTriggerExit2D(collision);
+        if (collision.gameObject.layer != LayerManager.Instance.HeroLayer) return;
 
         this.open.SetActive(false);
         this.close.SetActive(true);    

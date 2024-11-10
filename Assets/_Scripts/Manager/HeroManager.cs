@@ -10,7 +10,7 @@ public class HeroManager : MyMonoBehaviour
     [SerializeField] protected List<HeroSpawner> heroClasses;
     [SerializeField] protected List<Transform> heros;
     public List<HeroSpawner> HerosClasses => heroClasses;
-    public List <Transform> Heros => heros;
+    public List<Transform> Heros => heros;
 
     protected override void Awake()
     {

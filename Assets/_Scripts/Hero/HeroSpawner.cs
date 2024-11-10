@@ -5,6 +5,7 @@ using UnityEngine;
 public class HeroSpawner : Spawner
 {
     [SerializeField] protected Transform spawnPos;
+    public bool isHeroChanged = false;
 
     protected override void LoadComponents()
     {
@@ -25,6 +26,7 @@ public class HeroSpawner : Spawner
         GameObject hero = this.SpawnPrefab(heroObj.transform, this.spawnPos.position, transform.rotation).gameObject;
 
         HeroManager.Instance.Heros.Add(hero.transform);
+        this.isHeroChanged = true;
 
         return hero;
     }
