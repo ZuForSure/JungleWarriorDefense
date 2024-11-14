@@ -8,6 +8,7 @@ public class BuyHero : PlayerInteract
     [SerializeField] protected int exp2Buy = 50;
     [SerializeField] protected int maxHeros = 3;
     [SerializeField] protected GameObject close, open;
+    public int Exp2Buy => exp2Buy;  
 
     protected override void LoadComponents()
     {

@@ -7,6 +7,7 @@ public class UpgradeTurret : PlayerInteract
     [Header("Upgrade Turret")]
     [SerializeField] protected TurretController turretCtrl;
     [SerializeField] protected int gold2Upgrade = 50;
+    public int Gold2Upgrade => gold2Upgrade;
 
     protected override void LoadComponents()
     {

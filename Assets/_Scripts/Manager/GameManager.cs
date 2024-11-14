@@ -53,7 +53,6 @@ public class GameManager : MyMonoBehaviour
     private IEnumerator VictoryGameDelay()
     {
         yield return new WaitForSeconds(2);
-        Debug.Log("VICTORY");
         this.gameVictoryImage.gameObject.SetActive(true);
     }
 

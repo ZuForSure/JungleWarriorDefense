@@ -6,6 +6,7 @@ public class BuildTurret : PlayerInteract
 {
     [Header("Build")]
     [SerializeField] protected int gold2Build = 10;
+    public int Gold2Buy => gold2Build;
 
     public override void OnPlayerInteract()
     {

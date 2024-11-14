@@ -7,6 +7,7 @@ public class UpgradeHero : PlayerInteract
     [Header("Upgrade Hero")]
     [SerializeField] protected HeroController heroCtrl;
     [SerializeField] protected int exp2Upgrade = 100;
+    public int Exp2Upgrade => exp2Upgrade;
 
     protected override void OnTriggerStay2D(Collider2D collision)
     {
