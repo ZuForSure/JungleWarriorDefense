@@ -7,6 +7,8 @@ public class ButtonNextLevel : BaseButton
 {
     protected override void OnClick()
     {
+        Time.timeScale = 1.0f;
+
         char levelChar = SceneManager.GetActiveScene().name.ToString()[^1];
         int nextLevel = (int)char.GetNumericValue(levelChar) + 1;
 

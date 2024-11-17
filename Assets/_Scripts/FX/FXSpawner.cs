@@ -10,6 +10,7 @@ public class FXSpawner : Spawner
     public static string turretAppear = "Turret Appear FX";
     public static string turretDisAppear = "Turret Dissappear FX";
     public static string enemyDead = "Enemy Dead FX";
+    public static string loseGameFX = "Lose Game FX";
 
     protected override void Awake()
     {
@@ -22,5 +23,12 @@ public class FXSpawner : Spawner
         Transform turretAppearFX = this.SpawnPrefab(turretAppear, spawnPos, spawnRot);
         if (turretAppearFX == null) return;
         turretAppearFX.gameObject.SetActive(true);
+    }
+
+    public virtual void SpawnLoseFX(Vector3 spawnPos, Quaternion spawnRot)
+    {
+        Transform loseGame = this.SpawnPrefab(loseGameFX, spawnPos, spawnRot);
+        if (loseGame == null) return;
+        loseGame.gameObject.SetActive(true);
     }
 }

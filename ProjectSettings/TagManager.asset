@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 3850439733
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -56,6 +59,9 @@ TagManager:
     locked: 0
   - name: Effect
     uniqueID: 918489111
+    locked: 0
+  - name: Grid Map
+    uniqueID: 766421023
     locked: 0
   - name: UI
     uniqueID: 606200497

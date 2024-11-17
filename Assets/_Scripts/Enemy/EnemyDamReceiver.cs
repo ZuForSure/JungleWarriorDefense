@@ -56,6 +56,7 @@ public class EnemyDamReceiver : DamageReceiver
     protected virtual void DespawnEnemy()
     {
         EnemySpawner.Instance.DespawnToPool(transform.parent);
+        WaveManager.Instance.enemyCount--;
     }
 
     protected virtual void GetScore()

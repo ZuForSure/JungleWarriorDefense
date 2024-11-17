@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +9,8 @@ public class GameManager : MyMonoBehaviour
     protected static GameManager instance;
     public static GameManager Instance => instance;
 
-    [SerializeField] protected Image gameOverImage;
-    [SerializeField] protected Image gameVictoryImage;
+    [SerializeField] protected Image gameOverBG;
+    [SerializeField] protected Image gameVictoryBG;
     [SerializeField] protected bool isGameOver = false;
     [SerializeField] protected bool isVictory = false;
     public bool IsVictory => isVictory;
@@ -30,12 +31,12 @@ public class GameManager : MyMonoBehaviour
 
     protected virtual void LoadGameOverImg()
     {
-        if(this.gameOverImage != null) return;
-        this.gameOverImage = GameObject.Find("Game Over UI").GetComponentInChildren<Image>();
-        this.gameVictoryImage = GameObject.Find("Victory UI").GetComponentInChildren<Image>();
-        Debug.Log(transform.name + ": LoadGameOverImg", gameOverImage);
-        this.gameOverImage.gameObject.SetActive(false);
-        this.gameVictoryImage.gameObject.SetActive(false);
+        if(this.gameOverBG != null) return;
+        this.gameOverBG = GameObject.Find("Game Over UI").GetComponentInChildren<Image>();
+        this.gameVictoryBG = GameObject.Find("Victory UI").GetComponentInChildren<Image>();
+        Debug.Log(transform.name + ": LoadGameOverImg", gameOverBG);
+        this.gameOverBG.gameObject.SetActive(false);
+        this.gameVictoryBG.gameObject.SetActive(false);
     }
 
     public virtual void GameOver()
@@ -53,12 +54,17 @@ public class GameManager : MyMonoBehaviour
     private IEnumerator VictoryGameDelay()
     {
         yield return new WaitForSeconds(2);
-        this.gameVictoryImage.gameObject.SetActive(true);
+        this.gameVictoryBG.gameObject.SetActive(true);
     }
 
     private IEnumerator GameOverDelay()
     {
         yield return new WaitForSeconds(2);
-        this.gameOverImage.gameObject.SetActive(true);
+        FXSpawner.Instance.SpawnLoseFX(Vector3.zero, Quaternion.identity);
+
+        yield return new WaitForSeconds(1);
+        this.gameOverBG.gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
+
 }

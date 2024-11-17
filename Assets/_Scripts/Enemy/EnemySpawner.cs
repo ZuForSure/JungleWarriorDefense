@@ -11,7 +11,7 @@ public class EnemySpawner : Spawner
     [SerializeField] protected SpawnController spawnController;
     [SerializeField] protected int spawnCount = 0;
 
-    public static string Enemy = "SpeedEnemy";
+    public static string Enemy = "FlyEnemy";
 
     protected override void Awake()
     {

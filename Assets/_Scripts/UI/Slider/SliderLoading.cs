@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class SliderLoading : BaseSlider
 {
     [Header("Slider Loading")]
-    [SerializeField] protected float progress = 0f;
     [SerializeField] protected bool isLoaded = false;
 
     protected override void OnChange(float newValue)

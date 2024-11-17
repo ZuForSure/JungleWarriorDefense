@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public abstract class BaseSlider : MyMonoBehaviour
 {
     public Slider slider;
+    [SerializeField] protected float progress = 0f;
 
     protected override void LoadComponents()
     {

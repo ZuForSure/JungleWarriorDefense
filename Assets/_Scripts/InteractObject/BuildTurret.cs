@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuildTurret : PlayerInteract
 {
     [Header("Build")]
-    [SerializeField] protected int gold2Build = 10;
+    [SerializeField] protected int gold2Build = 15;
     public int Gold2Buy => gold2Build;
 
     public override void OnPlayerInteract()

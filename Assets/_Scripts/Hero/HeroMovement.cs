@@ -15,7 +15,7 @@ public class HeroMovement : HeroAbstract
     [SerializeField] protected Vector3 moveDirection;
 
     [Header("Jump")]
-    [SerializeField] protected float jumpForce = 225f;
+    [SerializeField] protected float jumpForce = 250f;
     [SerializeField] protected float plusJumpForce = 1.2f;
     [SerializeField] protected bool pressJump = false;
     [SerializeField] protected bool canDoubleJump = false;

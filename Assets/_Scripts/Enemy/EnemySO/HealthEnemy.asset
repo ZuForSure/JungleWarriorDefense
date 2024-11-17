@@ -15,8 +15,8 @@ MonoBehaviour:
   enemyName: 4
   enemyType: 2
   level: 1
-  hp: 15
-  speed: 5
+  hp: 20
+  speed: 6
   damage: 3
   gold: 13
   exp: 10

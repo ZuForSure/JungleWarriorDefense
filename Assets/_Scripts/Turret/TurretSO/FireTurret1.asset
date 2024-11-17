@@ -16,4 +16,4 @@ MonoBehaviour:
   level: 1
   turretMaxHP: 3
   turretDamage: 4
-  turretAttackSpeed: 2
+  turretAttackSpeed: 2.5
