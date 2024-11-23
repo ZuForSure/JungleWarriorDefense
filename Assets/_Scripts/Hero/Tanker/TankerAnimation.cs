@@ -15,7 +15,7 @@ public class TankerAnimation : HeroAnimation
 
     protected virtual void AttackAnimation()
     {
-        this.isAttacking = this.heroCtrl.HeroAttack.IsAttacking;
+        this.isAttacking = this.heroCtrl.HeroShooting.IsAttacking;
         this.animator.SetBool("IsAttacking", this.isAttacking);
     }
 }

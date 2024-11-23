@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class WaveManager : MyMonoBehaviour
+public class WaveManager : WaveAbstract
 {
+    [Header("Wave Manager")]
     protected static WaveManager instance;
     public static WaveManager Instance => instance;
 
@@ -16,6 +17,7 @@ public class WaveManager : MyMonoBehaviour
     [SerializeField] protected float timeBetweenWaves = 10f;
     [SerializeField] protected float timeBetweenEnemies = 5f;
     [SerializeField] protected int maxEnemies = 5; 
+    [SerializeField] protected int newQuantityE = 5; 
     [SerializeField] protected int waveCount = 0; 
     [SerializeField] protected int finalWave = 3; 
     public int WaveCount => waveCount;
@@ -28,6 +30,12 @@ public class WaveManager : MyMonoBehaviour
         WaveManager.instance = this;
     }
 
+    protected override void Reset()
+    {
+        base.Reset();
+        this.ResetDataWave();
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -35,6 +43,15 @@ public class WaveManager : MyMonoBehaviour
 
         this.ChangeTimeBetweenE();
         this.Spawning();
+    }
+
+    protected virtual void ResetDataWave()
+    {
+        this.timeBetweenWaves = this.waveController.LevelSO.timeBetweenWaves;
+        this.timeBetweenEnemies = this.waveController.LevelSO.timeBetweenEnemies; ;
+        this.maxEnemies = this.waveController.LevelSO.maxEnemies; ;
+        this.newQuantityE = this.waveController.LevelSO.newQuantityE; ;
+        this.finalWave = this.waveController.LevelSO.finalWave; ;
     }
 
     protected virtual bool CheckIsStartWave()
@@ -46,7 +63,7 @@ public class WaveManager : MyMonoBehaviour
     protected virtual void ChangeTimeBetweenE()
     {
         if (this.waveCount != this.finalWave) return;
-        this.timeBetweenEnemies = 2.5f;
+        this.timeBetweenEnemies = 1.5f;
     }
 
     protected virtual void Spawning()
@@ -76,7 +93,7 @@ public class WaveManager : MyMonoBehaviour
             yield return new WaitForSeconds(this.timeBetweenEnemies);
         }
         
-        this.maxEnemies += 5;
+        this.maxEnemies += this.newQuantityE;
         yield return new WaitForSeconds(this.timeBetweenWaves);
 
         this.isWaveDone = true;

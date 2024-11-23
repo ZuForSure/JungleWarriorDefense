@@ -17,5 +17,7 @@ public class ButtonNextLevel : BaseButton
 
         this.sceneLoading.SetActive(true);
         StartCoroutine(this.sliderLoading.LoadingScene(nextLevelScene));
+
+        AudioManager.Instance.PlayBackgroundLevel(nextLevelScene);
     }
 }

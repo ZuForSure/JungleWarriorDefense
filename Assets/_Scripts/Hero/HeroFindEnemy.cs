@@ -36,7 +36,7 @@ public class HeroFindEnemy : FindEnemyBase
 
     protected virtual void CheckAutoAttack2TurnDirectionRaycast()
     {
-        if (!this.heroCtrl.HeroAttack.IsAutoAttack) return;
+        if (!this.heroCtrl.HeroShooting.IsAutoAttack) return;
         if (this.heroCtrl.HeroAnimation.transform.localScale.x > 0) return;
         this.raycastDirection = Vector3.left;
     }

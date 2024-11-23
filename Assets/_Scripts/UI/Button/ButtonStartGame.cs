@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ButtonStartGame : BaseButton
 {
-    //[Header("Button Start Game")]
-
     protected override void OnClick()
     {
+        Time.timeScale = 1.0f;
+
         this.sceneLoading.SetActive(true);
         StartCoroutine(this.sliderLoading.LoadingScene("Select Level"));
     }

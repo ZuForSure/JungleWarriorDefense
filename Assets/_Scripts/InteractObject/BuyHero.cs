@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuyHero : PlayerInteract
 {
     [Header("Buy")]
-    [SerializeField] protected int exp2Buy = 50;
+    [SerializeField] protected int exp2Buy = 100;
     [SerializeField] protected int maxHeros = 3;
     [SerializeField] protected GameObject close, open;
     public int Exp2Buy => exp2Buy;  
@@ -30,6 +30,7 @@ public class BuyHero : PlayerInteract
         if (this.IsMaxHero()) return;
         if (!this.IsEnoughExp(this.exp2Buy)) return;
         this.SpawnHero();
+        this.SpawnSound();
     }
 
     protected virtual bool IsMaxHero()
@@ -47,6 +48,11 @@ public class BuyHero : PlayerInteract
         HeroSpawner heroType = HeroManager.Instance.GetRandomHeroClass();
         GameObject hero = heroType.GetHero(1);
         hero.SetActive(true);
+    }
+
+    protected virtual void SpawnSound()
+    {
+        AudioManager.Instance.PlaySFX("buy new things");
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

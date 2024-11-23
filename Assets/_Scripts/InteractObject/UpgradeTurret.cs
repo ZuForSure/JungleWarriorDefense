@@ -31,6 +31,7 @@ public class UpgradeTurret : PlayerInteract
     {
         this.SpawnTurretLevelUp();
         this.DespawnOldTurret();
+        this.SpawnSound();
     }
 
     protected virtual void SpawnTurretLevelUp()
@@ -47,6 +48,11 @@ public class UpgradeTurret : PlayerInteract
     protected virtual void DespawnOldTurret()
     {
         TurretSpawner.Instance.DespawnToPool(transform.parent);
+    }
+
+    protected virtual void SpawnSound()
+    {
+        AudioManager.Instance.PlaySFX("buy new things");
     }
 
     protected virtual Transform GetTurretLevelUp()

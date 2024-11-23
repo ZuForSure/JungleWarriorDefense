@@ -51,6 +51,7 @@ public class EnemyDamReceiver : DamageReceiver
         this.DespawnEnemy();
         this.GetScore();
         this.SpawnFX();
+        this.SpawnSound();
     }
 
     protected virtual void DespawnEnemy()
@@ -72,5 +73,10 @@ public class EnemyDamReceiver : DamageReceiver
         Transform newFX = FXSpawner.Instance.SpawnPrefab(FXSpawner.enemyDead, spawnPos, spawnRot);
         if (newFX == null) return;
         newFX.gameObject.SetActive(true);
+    }
+
+    protected virtual void SpawnSound()
+    {
+        AudioManager.Instance.PlaySFX("Enemy Die");
     }
 }

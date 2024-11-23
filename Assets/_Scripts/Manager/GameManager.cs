@@ -9,6 +9,7 @@ public class GameManager : MyMonoBehaviour
     protected static GameManager instance;
     public static GameManager Instance => instance;
 
+    [SerializeField] protected LevelSO nextLevel;
     [SerializeField] protected Image gameOverBG;
     [SerializeField] protected Image gameVictoryBG;
     [SerializeField] protected bool isGameOver = false;
@@ -49,6 +50,9 @@ public class GameManager : MyMonoBehaviour
     {
         this.isVictory = true;
         StartCoroutine(VictoryGameDelay());
+
+        if (this.nextLevel == null) return;
+        this.nextLevel.isUnlocked = true;
     }
 
     private IEnumerator VictoryGameDelay()
@@ -61,10 +65,15 @@ public class GameManager : MyMonoBehaviour
     {
         yield return new WaitForSeconds(2);
         FXSpawner.Instance.SpawnLoseFX(Vector3.zero, Quaternion.identity);
+        this.SpawnSound();
 
         yield return new WaitForSeconds(1);
         this.gameOverBG.gameObject.SetActive(true);
         Time.timeScale = 0f;
     }
 
+    protected virtual void SpawnSound()
+    {
+        AudioManager.Instance.PlaySFX("Turret Despawn");
+    }
 }

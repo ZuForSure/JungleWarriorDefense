@@ -9,7 +9,7 @@ public class EnemySpawner : Spawner
 
     [Header("EnemySpawner")]
     [SerializeField] protected SpawnController spawnController;
-    [SerializeField] protected int spawnCount = 0;
+    //[SerializeField] protected int spawnCount = 0;
 
     public static string Enemy = "FlyEnemy";
 
@@ -38,7 +38,7 @@ public class EnemySpawner : Spawner
         Vector3 spawnPos = randPoint.position;
         Quaternion spawnRot = Quaternion.identity;
 
-        Transform newEnemy = this.SpawnPrefab(Enemy, spawnPos, spawnRot);
+        Transform newEnemy = this.SpawnPrefab(this.GetRandomEnemy(), spawnPos, spawnRot);
         newEnemy.gameObject.SetActive(true);
     }
 

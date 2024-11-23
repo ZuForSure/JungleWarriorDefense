@@ -6,7 +6,7 @@ public class UpgradeHero : PlayerInteract
 {
     [Header("Upgrade Hero")]
     [SerializeField] protected HeroController heroCtrl;
-    [SerializeField] protected int exp2Upgrade = 100;
+    [SerializeField] protected int exp2Upgrade = 200;
     public int Exp2Upgrade => exp2Upgrade;
 
     protected override void OnTriggerStay2D(Collider2D collision)
@@ -33,6 +33,7 @@ public class UpgradeHero : PlayerInteract
     {
         this.SpawnLevelUpHero();
         this.DespawnOldHero();
+        this.SpawnSound();
     }
 
     protected virtual void SpawnLevelUpHero()
@@ -51,7 +52,12 @@ public class UpgradeHero : PlayerInteract
         HeroManager.Instance.Heros.Remove(this.heroCtrl.transform);
         this.heroCtrl.gameObject.SetActive(false);
         this.heroCtrl = null;
-    }  
+    }
+
+    protected virtual void SpawnSound()
+    {
+        AudioManager.Instance.PlaySFX("buy new things");
+    }
 
     protected virtual void SetPlayerIndex(GameObject hero)
     {

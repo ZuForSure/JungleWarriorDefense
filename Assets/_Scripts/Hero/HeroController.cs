@@ -10,13 +10,13 @@ public class HeroController : MyMonoBehaviour
     [SerializeField] protected HeroMovement heroMovement;
     [SerializeField] protected HeroAnimation heroAnimation;
     [SerializeField] protected HeroFindEnemy heroFindEne;
-    [SerializeField] protected HeroAttack heroAttack;
+    [SerializeField] protected HeroShooting heroShooting;
     public Rigidbody2D RB2d => rb2d;
     public HeroSO HeroSO => heroSO;
     //public HeroMovement HeroMovement => heroMovement;
     public HeroAnimation HeroAnimation => heroAnimation;
     public HeroFindEnemy HeroFindEnemy => heroFindEne;
-    public HeroAttack HeroAttack => heroAttack;
+    public HeroShooting HeroShooting => heroShooting;
 
     protected override void LoadComponents()
     {
@@ -64,8 +64,8 @@ public class HeroController : MyMonoBehaviour
 
     protected virtual void LoadHeroAttack()
     {
-        if (this.heroAttack != null) return;
-        this.heroAttack = transform.GetComponentInChildren<HeroAttack>();
+        if (this.heroShooting != null) return;
+        this.heroShooting = transform.GetComponentInChildren<HeroShooting>();
         Debug.Log(transform.name + ": LoadHeroAttack", gameObject);
     }
 

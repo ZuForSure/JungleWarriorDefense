@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class TurretShooting : TurretAbstract
 {
@@ -49,6 +50,7 @@ public class TurretShooting : TurretAbstract
         Transform newBullet = BulletSpawner.Instance.SpawnPrefab(this.GetBulletName(), spawnPos, Quaternion.identity);
         if (newBullet == null) return;
 
+        this.SpawnSound();
         this.SetBulletDamage(newBullet);
         newBullet.gameObject.SetActive(true);
     }
@@ -57,6 +59,12 @@ public class TurretShooting : TurretAbstract
     {
         this.canShoot = this.turretCtrl.TurretFindEne.IsFindEnemy;
         return this.canShoot;
+    }
+
+    protected virtual void SpawnSound()
+    {
+        string soundName = transform.parent.name.Remove(transform.parent.name.Length - 2);
+        AudioManager.Instance.PlaySFX(soundName);
     }
 
     protected virtual string GetBulletName()

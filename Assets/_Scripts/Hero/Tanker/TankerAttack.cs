@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankerAttack : HeroAttack
+public class TankerAttack : HeroShooting
 {
     [Header("Tanker Attack")]
     [SerializeField] protected Transform attackPoint;

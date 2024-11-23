@@ -17,7 +17,7 @@ public class TurnDirection : HeroAbstract
         if (InputManager.Instance.HorizontalInput == 0) return;
         if (InputManager.Instance.HorizontalInput < 0)
         {
-            transform.rotation = Quaternion.Euler(0 , 0, 180f);
+            transform.rotation = Quaternion.Euler(0, 0, 180f);
             return;
         }
 

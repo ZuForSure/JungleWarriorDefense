@@ -56,23 +56,13 @@ public class PlayerInteract : MyMonoBehaviour
 
     protected virtual bool IsEnoughExp(int exp)
     {
-        if (!ScoreManager.Instance.DeductExp(exp))
-        {
-            Debug.Log("NOT ENOUGH EXP");
-            return false;
-        }
-
+        if (!ScoreManager.Instance.DeductExp(exp)) return false;
         return true;
     }
 
     protected virtual bool IsEnoughGold(int gold)
     {
-        if (!ScoreManager.Instance.DeductGold(gold))
-        {
-            Debug.Log("NOT ENOUGH GOLD");
-            return false;
-        }
-
+        if (!ScoreManager.Instance.DeductGold(gold)) return false;
         return true;
     }
 

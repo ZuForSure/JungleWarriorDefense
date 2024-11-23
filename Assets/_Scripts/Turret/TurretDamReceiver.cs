@@ -20,6 +20,12 @@ public class TurretDamReceiver : DamageReceiver
         this.LoadTurretCtrl();
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.ReBorn();
+    }
+
     protected virtual void ResetTurretHP()
     {
         this.turretHP = this.turretCtrl.TurretSO.turretMaxHP;
@@ -39,6 +45,7 @@ public class TurretDamReceiver : DamageReceiver
         this.DespawnTurret();
         this.SpawnTurretPoint();
         this.SpawnFX();
+        this.SpawnSound();
     }
 
     protected virtual void DespawnTurret()
@@ -62,5 +69,10 @@ public class TurretDamReceiver : DamageReceiver
         Transform newFX = FXSpawner.Instance.SpawnPrefab(FXSpawner.turretDisAppear, spawnPos, spawnRot);
         if (newFX == null) return;
         newFX.gameObject.SetActive(true);
+    }
+
+    protected virtual void SpawnSound()
+    {
+        AudioManager.Instance.PlaySFX("Turret Despawn");
     }
 }

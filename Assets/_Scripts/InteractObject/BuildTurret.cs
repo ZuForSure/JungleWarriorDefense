@@ -24,6 +24,7 @@ public class BuildTurret : PlayerInteract
 
         this.DespawnTurretPoint();
         this.SpawnFX();
+        this.SpawnSound();
     }
 
     protected virtual void DespawnTurretPoint()
@@ -34,5 +35,10 @@ public class BuildTurret : PlayerInteract
     protected virtual void SpawnFX()
     {
         FXSpawner.Instance.SpawnTurretAppearFX(transform.position, transform.rotation);
+    }
+
+    protected virtual void SpawnSound()
+    {
+        AudioManager.Instance.PlaySFX("buy new things");
     }
 }

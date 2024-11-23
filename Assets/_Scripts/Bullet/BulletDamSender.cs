@@ -12,7 +12,6 @@ public class BulletDamSender : DamageSender
     {
         base.OnEnable();
         this.damage = this.bulletDamage;
-        //Debug.Log(transform.name + ": Damage: " + this.bulletDamage);
     }
 
     protected override void LoadComponents()
@@ -33,6 +32,7 @@ public class BulletDamSender : DamageSender
         base.SendDamage(damageReceiver);
         this.DespawnBullet();
         this.SpawnFX();
+        this.SpawnSound();
     }
 
     protected virtual void DespawnBullet()
@@ -48,6 +48,11 @@ public class BulletDamSender : DamageSender
         Transform newFX = FXSpawner.Instance.SpawnPrefab(transform.parent.name + " FX", spawnPos, spawnRot);
         if (newFX == null) return;
         newFX.gameObject.SetActive(true);
+    }
+
+    protected virtual void SpawnSound()
+    {
+        AudioManager.Instance.PlaySFX(transform.parent.name);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
