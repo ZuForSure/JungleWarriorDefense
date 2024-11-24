@@ -50,9 +50,9 @@ public class TurretShooting : TurretAbstract
         Transform newBullet = BulletSpawner.Instance.SpawnPrefab(this.GetBulletName(), spawnPos, Quaternion.identity);
         if (newBullet == null) return;
 
-        this.SpawnSound();
         this.SetBulletDamage(newBullet);
         newBullet.gameObject.SetActive(true);
+        this.SpawnSound();
     }
 
     protected virtual bool CheckCanShoot()

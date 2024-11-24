@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyMovement : EnemyAbstract
 {
     [Header("Enemy Movement")]
-    [SerializeField] protected Transform target;
+    public Transform target;
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected Vector3 moveDirection;
 
@@ -44,6 +44,7 @@ public class EnemyMovement : EnemyAbstract
     {
         if (transform.parent.position.x > this.target.position.x) this.moveDirection.x = -1;
         if (transform.parent.position.x < this.target.position.x) this.moveDirection.x = 1;
+        if (transform.parent.position.x == this.target.position.x) this.moveDirection.x = 0;
         
         return this.moveDirection;
     }

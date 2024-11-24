@@ -8,7 +8,7 @@ public class HeroAttackMelee : HeroAbstract
     [SerializeField] protected Transform hitBoxRange;
     [SerializeField] protected bool isAttack = false;
     public float atkDelay = 0f;
-    public float startAtkDelay = 0.75f;
+    public float startAtkDelay = 0.5f;
     public bool IsAttaking => isAttack;
 
     protected override void LoadComponents()
