@@ -8,10 +8,11 @@ public class EnemyController : MyMonoBehaviour
     [SerializeField] protected EnemySO enemySO;
     [SerializeField] protected EnemyDamSender enemyDamSender;
     [SerializeField] protected EnemyAnimation eAnimation;
+    [SerializeField] protected BossAbilityController bossAbilityCtrl;
     public Rigidbody2D E_rb => e_rb;
     public EnemySO EnemySO => enemySO;  
-    public EnemyDamSender EnemyDamSender => enemyDamSender;  
     public EnemyAnimation EnemyAnimation => eAnimation;  
+    public BossAbilityController BossAbilityCtrl => bossAbilityCtrl;  
 
     protected override void LoadComponents()
     {
@@ -19,6 +20,7 @@ public class EnemyController : MyMonoBehaviour
         this.LoadRigi2D();
         this.LoadEnemyAnimator();
         this.LoadDamSender();
+        this.LoadBossAbilityCtrl();
     }
 
     protected virtual void LoadRigi2D()
@@ -40,5 +42,12 @@ public class EnemyController : MyMonoBehaviour
         if (this.enemyDamSender != null) return;
         this.enemyDamSender = transform.GetComponentInChildren<EnemyDamSender>();
         Debug.Log(transform.name + ": LoadDamSender", gameObject);
+    }
+
+    protected virtual void LoadBossAbilityCtrl()
+    {
+        if (this.bossAbilityCtrl != null) return;
+        this.bossAbilityCtrl = transform.GetComponent<BossAbilityController>();
+        Debug.Log(transform.name + ": LoadBossAbilityCtrl", gameObject);
     }
 }

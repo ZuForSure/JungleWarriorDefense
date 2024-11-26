@@ -69,6 +69,7 @@ public class CameraShake : MyMonoBehaviour
     protected virtual void StopShake()
     {
         CinemachineBasicMultiChannelPerlin _cbmcp = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        
         _cbmcp.m_AmplitudeGain = 0;
         timer = 0;
     }

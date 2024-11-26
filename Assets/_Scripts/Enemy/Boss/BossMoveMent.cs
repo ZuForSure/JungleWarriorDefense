@@ -19,6 +19,12 @@ public class BossMoveMent : EnemyMovement
         this.StopShakeWhenBossAppeared();
     }
 
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        this.LookAtTarget();
+    }
+
     protected virtual void SetNullTarget()
     {
         this.target = null;
@@ -30,6 +36,21 @@ public class BossMoveMent : EnemyMovement
         if (this.target.position.x < transform.parent.position.x) return;
         
         CameraShake.Instance.canShake = false;
-        this.SetNullTarget();
+    }
+
+    protected virtual void LookAtTarget()
+    {
+        if (this.target == null) return;
+
+        if (this.target.position.x > transform.parent.position.x + 0.5)
+        {
+            this.enemyCtrl.BossAbilityCtrl.Model.transform.localScale = new Vector3(-2, 2, 2);
+            this.enemyCtrl.BossAbilityCtrl.SwingWpAbility.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            this.enemyCtrl.BossAbilityCtrl.Model.transform.localScale = new Vector3(2, 2, 2);
+            this.enemyCtrl.BossAbilityCtrl.SwingWpAbility.transform.localScale = Vector3.one;
+        }
     }
 }

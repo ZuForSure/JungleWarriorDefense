@@ -22,6 +22,8 @@ public class EnemyMovement : EnemyAbstract
     protected override void Update()
     {
         base.Update();
+        if (!this.CheckCanMove()) return;
+
         this.Moving();
     }
 
@@ -30,6 +32,12 @@ public class EnemyMovement : EnemyAbstract
         if (this.target != null) return;
         this.target = GameObject.Find("Target Points").transform;
         Debug.Log(transform.name + "LoadTarget", gameObject);
+    }
+
+    protected virtual bool CheckCanMove()
+    {
+        bool canMove = this.enemyCtrl.BossAbilityCtrl.SwingWpAbility.IsSwinged;
+        return canMove;
     }
 
     protected virtual void Moving()
@@ -45,7 +53,7 @@ public class EnemyMovement : EnemyAbstract
         if (transform.parent.position.x > this.target.position.x) this.moveDirection.x = -1;
         if (transform.parent.position.x < this.target.position.x) this.moveDirection.x = 1;
         if (transform.parent.position.x == this.target.position.x) this.moveDirection.x = 0;
-        
+
         return this.moveDirection;
     }
 }

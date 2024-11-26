@@ -12,6 +12,9 @@ public class BulletSpawner : Spawner
     public static string wizardBullet = "Wizard Bullet";
     public static string meleeAttack = "Melee Attack";
 
+    public static string bossBullet = "Boss Bullet";
+    public static string boomRain = "Boom Boss Bullet";
+
     protected override void Awake()
     {
         if (instance != null) Debug.LogWarning("Only 1 BulletSpawner");
