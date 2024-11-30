@@ -25,6 +25,19 @@ public class BossMoveMent : EnemyMovement
         this.LookAtTarget();
     }
 
+    protected override void Moving()
+    {
+        if(!this.CheckCanMove()) return;
+
+        base.Moving();
+    }
+
+    protected virtual bool CheckCanMove()
+    {
+        bool canMove = this.enemyCtrl.BossAbilityCtrl.SwingWpAbility.IsSwinged;
+        return canMove;
+    }
+
     protected virtual void SetNullTarget()
     {
         this.target = null;

@@ -7,6 +7,7 @@ public class EnemyDamReceiver : DamageReceiver
     [Header("Enemy Damge Receiver")]
     [SerializeField] protected EnemyController enemyCtrl;
     [SerializeField] protected int gold, exp;
+    public EnemyController EnemyController => enemyCtrl;
 
     protected override void LoadComponents()
     {

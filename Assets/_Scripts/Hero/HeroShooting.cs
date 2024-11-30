@@ -65,6 +65,9 @@ public class HeroShooting : HeroAbstract
 
         this.SetBulletDamage(bullet);
         bullet.gameObject.SetActive(true);
+
+        BulletController bulletCtrl = bullet.GetComponent<BulletController>();
+        bulletCtrl.SetShooter(transform.parent);
         this.SpawnSound();
     }
 

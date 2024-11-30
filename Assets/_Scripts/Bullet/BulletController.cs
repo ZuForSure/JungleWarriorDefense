@@ -7,10 +7,11 @@ public class BulletController : MyMonoBehaviour
     [SerializeField] protected Rigidbody2D bulletRB;
     [SerializeField] protected BulletDespawn bulletDespawn;
     [SerializeField] protected Transform model;
-
+    [SerializeField] protected Transform shooter;
     public BulletDamSender bulletDamSender;
     public BulletDespawn BulletDespawn => bulletDespawn;
     public Transform Model => model;
+    public Transform Shooter => shooter;
 
     protected override void LoadComponents()
     {
@@ -47,5 +48,10 @@ public class BulletController : MyMonoBehaviour
         if (this.model != null) return;
         this.model = transform.Find("Model");
         Debug.Log(transform.name + ": LoadModel", gameObject);
+    }
+
+    public virtual void SetShooter(Transform shooter)
+    {
+        this.shooter = shooter;
     }
 }

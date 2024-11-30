@@ -47,7 +47,6 @@ public class SwingWpAbility : BossAbilityAbstract
         this.isSwinged = false;
         yield return new WaitForSeconds(this.timeBtwSwing);
 
-        Debug.LogWarning("SWING");
         StartCoroutine(this.ActiveHitBox());
 
         this.isSwinged = true;
@@ -57,6 +56,7 @@ public class SwingWpAbility : BossAbilityAbstract
     {
         this.isPlayAnimation = true;
         this.hitBoxSwing.gameObject.SetActive(isPlayAnimation);
+        this.SpawnSound();
 
         yield return new WaitForSeconds(0.02f);
         this.isPlayAnimation = false;
@@ -67,5 +67,10 @@ public class SwingWpAbility : BossAbilityAbstract
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, this.lineOfsite);
+    }
+
+    protected virtual void SpawnSound()
+    {
+        AudioManager.Instance.PlaySFX("Melee Attack Hero");
     }
 }

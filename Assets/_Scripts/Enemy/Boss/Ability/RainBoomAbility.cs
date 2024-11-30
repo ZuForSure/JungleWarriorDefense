@@ -7,8 +7,9 @@ public class RainBoomAbility : BossAbilityAbstract
     [Header("Rain Boom Ability")]
     [SerializeField] protected List<Transform> spawnBoomPoints;
     [SerializeField] protected float timeBtwSpawn = 15f;
-    [SerializeField] protected float timeBtwBoom = 1.5f;
-    [SerializeField] protected int numOfBoom = 5;
+    [SerializeField] protected float timeBtwBoom = 1f;
+    [SerializeField] protected float damage = 3f;
+    [SerializeField] protected int numOfBoom = 10;
     [SerializeField] protected bool isSpawnDone = true;
 
     protected override void LoadComponents()
@@ -67,6 +68,10 @@ public class RainBoomAbility : BossAbilityAbstract
             Vector3 spawnPos = this.GetRandomPoint().position;
             Transform boom = BulletSpawner.Instance.SpawnPrefab(BulletSpawner.boomRain, spawnPos, Quaternion.identity);
             if (boom == null) yield return null;
+
+            BulletController bulletCtrl = boom.GetComponent<BulletController>();
+            bulletCtrl.bulletDamSender.bulletDamage = this.damage;
+            bulletCtrl.SetShooter(transform.parent);
             boom.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(this.timeBtwBoom);

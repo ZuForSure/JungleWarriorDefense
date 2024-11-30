@@ -31,5 +31,12 @@ public class TankerAttack : HeroShooting
 
         this.SetBulletDamage(meleeAttack);
         meleeAttack.gameObject.SetActive(true);
+
+        this.SpawnSoundTanker();
+    }
+
+    protected virtual void SpawnSoundTanker()
+    {
+        AudioManager.Instance.PlaySFX("Melee Attack Hero");
     }
 }

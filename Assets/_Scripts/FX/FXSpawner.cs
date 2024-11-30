@@ -10,7 +10,10 @@ public class FXSpawner : Spawner
     public static string turretAppear = "Turret Appear FX";
     public static string turretDisAppear = "Turret Dissappear FX";
     public static string enemyDead = "Enemy Dead FX";
+    public static string meleeFX = "Melee Attack FX";
     public static string loseGameFX = "Lose Game FX";
+    public static string boomRain = "Boom Boss Bullet FX";
+    public static string frozen = "Frozen FX";
 
     protected override void Awake()
     {

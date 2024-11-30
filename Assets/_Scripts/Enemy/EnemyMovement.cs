@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyMovement : EnemyAbstract
 {
     [Header("Enemy Movement")]
     public Transform target;
+    public float baseSpeed;
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected Vector3 moveDirection;
 
@@ -16,14 +18,20 @@ public class EnemyMovement : EnemyAbstract
     protected override void ResetValue()
     {
         base.ResetValue();
+        this.baseSpeed = this.enemyCtrl.EnemySO.speed;
         this.moveSpeed = this.enemyCtrl.EnemySO.speed;
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.ResetSpeed();
     }
 
     protected override void Update()
     {
         base.Update();
-        if (!this.CheckCanMove()) return;
-
+        this.UpdateMoveSpeed();
         this.Moving();
     }
 
@@ -34,16 +42,15 @@ public class EnemyMovement : EnemyAbstract
         Debug.Log(transform.name + "LoadTarget", gameObject);
     }
 
-    protected virtual bool CheckCanMove()
+    protected virtual void UpdateMoveSpeed()
     {
-        bool canMove = this.enemyCtrl.BossAbilityCtrl.SwingWpAbility.IsSwinged;
-        return canMove;
+        if (this.moveSpeed >= this.baseSpeed) return;
+        StartCoroutine(this.ResetSlowSpeed());
     }
 
     protected virtual void Moving()
     {
         if (this.target == null) return;
-
         Vector3 direction = this.GetDirection() * Time.deltaTime * this.moveSpeed;
         this.enemyCtrl.E_rb.MovePosition(transform.parent.position + direction);
     }
@@ -55,5 +62,21 @@ public class EnemyMovement : EnemyAbstract
         if (transform.parent.position.x == this.target.position.x) this.moveDirection.x = 0;
 
         return this.moveDirection;
+    }
+
+    protected IEnumerator ResetSlowSpeed()
+    {
+        yield return new WaitForSeconds(1f);
+        this.ResetSpeed();
+    }
+
+    public virtual void UpdateSpeed(float newSpeed)
+    {
+        this.moveSpeed = newSpeed;
+    }
+
+    public virtual void ResetSpeed()
+    {
+        this.moveSpeed = this.baseSpeed;
     }
 }

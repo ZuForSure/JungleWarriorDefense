@@ -10,6 +10,7 @@ public class ShootAbility : BossAbilityAbstract
     [SerializeField] protected CircleCollider2D circleCollider2D;
     [SerializeField] protected float lineOfsite = 10f;
     [SerializeField] protected float time2Charge = 2f;
+    [SerializeField] protected float damage = 3f;
 
     protected override void LoadComponents()
     {
@@ -55,6 +56,18 @@ public class ShootAbility : BossAbilityAbstract
 
         Transform newBullet = BulletSpawner.Instance.SpawnPrefab(BulletSpawner.bossBullet, transform.position, transform.rotation);
         if (newBullet == null) yield return null;
+
+        BulletController bulletCtrl = newBullet.GetComponent<BulletController>();
+        bulletCtrl.bulletDamSender.bulletDamage = this.damage;
+        bulletCtrl.SetShooter(transform.parent);
+
         newBullet.gameObject.SetActive(true);
+
+        this.SpawnSound();
+    }
+
+    protected virtual void SpawnSound()
+    {
+        AudioManager.Instance.PlaySFX("Boss Shooting");
     }
 }

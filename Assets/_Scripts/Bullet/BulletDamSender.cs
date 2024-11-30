@@ -53,8 +53,18 @@ public class BulletDamSender : DamageSender
         AudioManager.Instance.PlaySFX(transform.parent.name);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            this.DespawnBullet();
+            this.SpawnFX();
+            this.SpawnSound();
+            return;
+        }
+
+        if (collision.transform.parent == this.bulletCtrl.Shooter) return;
+
         this.SendDamageToObject(collision.transform);
     }
 }

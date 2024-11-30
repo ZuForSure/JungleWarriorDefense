@@ -11,6 +11,7 @@ public abstract class DamageReceiver : MyMonoBehaviour
     [SerializeField] protected float maxHp = 10f;
     [SerializeField] protected bool isDead = false;
     public float HP => hp;  
+    public float MaxHP => maxHp;  
 
     protected override void LoadComponents()
     {
