@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class HeroMovement : HeroAbstract
@@ -90,7 +86,7 @@ public class HeroMovement : HeroAbstract
     {
         if (!this.IsGrounded()) return;
 
-        Ground ground = GetRayCast().transform.GetComponent<Ground>();
+        Ground ground = this.GetRayCast().transform.GetComponent<Ground>();
         if (ground == null) return;
 
         if (!this.isGoingDown) return;

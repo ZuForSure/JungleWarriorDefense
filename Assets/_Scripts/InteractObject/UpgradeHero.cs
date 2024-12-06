@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UpgradeHero : PlayerInteract
@@ -54,14 +52,14 @@ public class UpgradeHero : PlayerInteract
         this.heroCtrl = null;
     }
 
-    protected virtual void SpawnSound()
-    {
-        AudioManager.Instance.PlaySFX("buy new things");
-    }
-
     protected virtual void SetPlayerIndex(GameObject hero)
     {
         int index = HeroManager.Instance.Heros.IndexOf(hero.transform);
         InputManager.Instance.playerIndex = index;
+    }
+
+    protected virtual void SpawnSound()
+    {
+        AudioManager.Instance.PlaySFX("buy new things");
     }
 }

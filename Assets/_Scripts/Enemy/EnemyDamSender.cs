@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyDamSender : DamageSender
@@ -8,8 +6,6 @@ public class EnemyDamSender : DamageSender
     [SerializeField] protected EnemyController eCtrl;
     [SerializeField] protected float time2SendDamge = 1f;
     [SerializeField] protected bool isDetectTurret = false;
-    public float Time2SendDamge => time2SendDamge;
-    public bool IsDetectTurret => isDetectTurret;
 
     protected override void ResetValue()
     {

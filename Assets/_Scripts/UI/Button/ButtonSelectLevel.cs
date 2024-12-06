@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ButtonSelectLevel : BaseButton
 {
@@ -34,15 +31,4 @@ public class ButtonSelectLevel : BaseButton
 
         AudioManager.Instance.PlayBackgroundLevel(sceneName);
     }
-
-    //protected virtual void PlayBackgroundLevel(string sceneName)
-    //{
-    //    foreach(AudioClip clip in AudioManager.Instance.audioClips)
-    //    {
-    //        if(clip.name != sceneName) continue;
-
-    //        AudioManager.Instance.PlayAudioBG(clip);
-    //        break;
-    //    }
-    //}
 }

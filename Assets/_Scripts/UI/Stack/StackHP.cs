@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StackHP : BaseStack
@@ -29,10 +27,7 @@ public class StackHP : BaseStack
     protected virtual void UpdateHpStack()
     {
         //BAD IDEA: JUST DEDUCT HP IS WORK, ADD HP WON'T WORK
-
         if (this.items.Count == (int)this.house.HP) return;
-
-        //int hpLeave = this.items.Count - (int)this.house.HP;
 
         this.items[0].gameObject.SetActive(false);
         this.items.Remove(items[0]);

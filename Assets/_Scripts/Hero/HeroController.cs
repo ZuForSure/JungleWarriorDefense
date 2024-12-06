@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HeroController : MyMonoBehaviour
@@ -13,7 +11,6 @@ public class HeroController : MyMonoBehaviour
     [SerializeField] protected HeroShooting heroShooting;
     public Rigidbody2D RB2d => rb2d;
     public HeroSO HeroSO => heroSO;
-    //public HeroMovement HeroMovement => heroMovement;
     public HeroAnimation HeroAnimation => heroAnimation;
     public HeroFindEnemy HeroFindEnemy => heroFindEne;
     public HeroShooting HeroShooting => heroShooting;
